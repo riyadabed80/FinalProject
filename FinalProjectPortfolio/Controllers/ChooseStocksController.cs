@@ -41,8 +41,9 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-        public string StockSelector(string userInput)
+        public string StockSymbol()
         {
+            string userInput = "AAPL";
             HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={userInput}&outputsize=full&apikey=apikey");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
             //hiding api key
@@ -155,6 +156,12 @@ namespace FinalProjectPortfolio.Controllers
             //gives the total amount of gain or loss
             double profit = endingInvestmentValue - begInvestmentValue;
             return profit;
+        }
+
+        public ActionResult StockSelector()
+        {
+
+            return View();
         }
 
         
