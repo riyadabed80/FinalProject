@@ -53,18 +53,18 @@ namespace FinalProjectPortfolio.Controllers
             //{
             StreamReader data = new StreamReader(response.GetResponseStream());
             string stock = data.ReadToEnd();
-            //string date = "2018-06-12";
+          
 
             ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
             JObject JsonData = JObject.Parse(stock);
-           string symbol = JsonData["Meta Data"]["2. Symbol"].ToString();
+            string symbol = JsonData["Meta Data"]["2. Symbol"].ToString();
             //ViewBag.StockData2 = JsonData["Time Series (Daily)"][date]["4. close"];
             return symbol;
         }
 
 
 
-    public static double HistoricalSharePrice(string symbol, string historicalDate)
+        public static double HistoricalSharePrice(string symbol, string historicalDate)
         {
             HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey=apikey");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
