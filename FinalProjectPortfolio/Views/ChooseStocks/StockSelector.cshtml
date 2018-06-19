@@ -2,7 +2,64 @@
 @{
     ViewBag.Title = "StockSelector";
 }
-
-<h2>StockSelector</h2>
 <h3>@ViewBag.StockData</h3>
 <h3>@ViewBag.StockData2</h3>
+
+
+<h2 align="center">Welcome to the Grand Circus Stock Selector</h2>
+
+<form action="/Home/SaveNewPotfolio" method="post">
+    <div class="form-group">
+        <label>Stock #1 Name</label>
+        <input type="text" name="stock1_name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Stock #1 Ticker</label>
+        <input type="text" name="stock1_tkr" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>How Much to Invest in Stock #1?</label>
+        <input type="text" name="stock1_beg_investment_value" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Stock #2 Name</label>
+        <input type="text" name="stock2_name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Stock #2 Ticker</label>
+        <input type="text" name="stock2_tkr" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>How Much to Invest in Stock #2?</label>
+        <input type="text" name="stock2_beg_investment_value" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Stock #3 Name</label>
+        <input type="text" name="stock3_name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Stock #3 Ticker</label>
+        <input type="text" name="stock3_tkr" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>How Much to Invest in Stock #3?</label>
+        <input type="text" name="stock3_beg_investment_value" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Start the Way-Back-Machine and Execute Your Buy!</label>
+        <input type="submit" value="Execute Buy" class="form-control" />
+    </div>
+
+</form>
+
+
+
