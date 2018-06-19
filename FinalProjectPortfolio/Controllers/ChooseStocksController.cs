@@ -18,11 +18,11 @@ namespace FinalProjectPortfolio.Controllers
             return View();
         }
 
-        public ActionResult NewsOfTheDay()
+        public ActionResult NewsOfTheDay(string historicalDate)
         {
 
             HttpWebRequest request =
-          WebRequest.CreateHttp($"https://api.nytimes.com/svc/search/v2/articlesearch.json?q=business&begin_date=20000202&end_date=20000202");
+          WebRequest.CreateHttp($"https://api.nytimes.com/svc/search/v2/articlesearch.json?q=business&begin_date={historicalDate}&end_date={historicalDate}");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
 
 
@@ -41,13 +41,13 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-        public ActionResult StockSelector()
+        public string StockSelector(string userInput)
         {
-            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=full&apikey=apikey");
+            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={userInput}&outputsize=full&apikey=apikey");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
             //hiding api key
 
-               HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
             //if (response.StatusCode == HttpStatusCode.OK) //Ok is the 200 status
             //{
@@ -57,9 +57,69 @@ namespace FinalProjectPortfolio.Controllers
 
             ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
             JObject JsonData = JObject.Parse(stock);
-            ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
+           string symbol = JsonData["Meta Data"]["2. Symbol"].ToString();
             //ViewBag.StockData2 = JsonData["Time Series (Daily)"][date]["4. close"];
-            return View();
+            return symbol;
+        }
+
+
+
+    public static double HistoricalSharePrice(string symbol, string historicalDate)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey=apikey");
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+            //hiding api key
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            //if (response.StatusCode == HttpStatusCode.OK) //Ok is the 200 status
+            //{
+            StreamReader data = new StreamReader(response.GetResponseStream());
+            string stockprice = data.ReadToEnd();
+            //string date = "2018-06-12";
+            //string now = 
+       
+
+            ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
+            JObject JsonData = JObject.Parse(stockprice);
+            //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
+            double begSharePrice = Double.Parse(JsonData["Time Series (Daily)"][historicalDate]["4. close"].ToString());
+            //double todayPrice = Double.Parse(JsonData["Time Series (Daily)"][now]["4. close"].ToString());
+
+            //ViewBag.UserPrice = userPrice;
+            // ViewBag.TodayPrice = todayPrice;
+
+            return begSharePrice;
+
+        }
+
+        public static double TodaySharePrice(string symbol)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=1min&apikey=apikey");
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+            //hiding api key
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            //if (response.StatusCode == HttpStatusCode.OK) //Ok is the 200 status
+            //{
+            StreamReader data = new StreamReader(response.GetResponseStream());
+            string stockprice = data.ReadToEnd();
+            //string date = "2018-06-12";
+            //string now = DateTime.Today.ToString();
+            //string time = "11:00:00";
+
+            //ViewBag.RawData = data.ReadToEnd(); //read all the response data
+            JObject JsonData = JObject.Parse(stockprice);
+            //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
+            //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
+            
+            double closingSharePrice = Double.Parse(JsonData["Time Series (1min)"]["2018-06-19 11:00:00"]["4. close"].ToString());
+
+            //ViewBag.UserPrice = userPrice;
+            //ViewBag.TodayPrice = todayPrice;
+
+            return closingSharePrice;
 
         }
     }

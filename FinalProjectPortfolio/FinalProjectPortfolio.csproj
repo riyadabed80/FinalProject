@@ -262,6 +262,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ChooseStocks\NewsOfTheDay.cshtml" />
     <Content Include="Views\ChooseStocks\StockSelector.cshtml" />
+    <Content Include="Views\ChooseStocks\StockPrice.cshtml" />
+    <Content Include="Views\ChooseStocks\NowPrice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
