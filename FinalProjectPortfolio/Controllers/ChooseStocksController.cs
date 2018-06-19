@@ -122,5 +122,41 @@ namespace FinalProjectPortfolio.Controllers
             return closingSharePrice;
 
         }
+        public static double NumberOfShares(double begInvestmentValue, double begSharePrice)
+        {
+            //gives number of shares
+            double numberOfShares = begInvestmentValue / begSharePrice;
+            //current value
+            //double currentValue = todaySharePrice * numberOfShares;
+
+            //double percentage = currentvalue / amountInvested;
+            //total return on investment
+            //double profit = currentvalue - amountInvested;
+
+            return numberOfShares;
+        }
+
+        public static double currentValue (double closingSharePrice, double numberOfShares)
+        {
+            //gives the new current value
+            double newValue = closingSharePrice * numberOfShares;
+            return newValue;
+        }
+
+        public static double Percentage(double endingInvestmentValue, double begInvestmentValue)
+        {
+            //gives the percentage increase
+            double percentIncrease = endingInvestmentValue / begInvestmentValue;
+            return percentIncrease;
+        }
+
+        public static double TotalAmountGained(double endingInvestmentValue, double begInvestmentValue)
+        {
+            //gives the total amount of gain or loss
+            double profit = endingInvestmentValue - begInvestmentValue;
+            return profit;
+        }
+
+        
     }
 }
