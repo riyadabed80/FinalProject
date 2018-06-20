@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FinalProjectPortfolio.Models;
 
 namespace FinalProjectPortfolio.Controllers
 {
@@ -41,27 +42,53 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-        public string StockSymbol()
+        public ActionResult SaveSymbol(decimal stock3_beg_investment_value, decimal stock2_beg_investment_value, decimal stock1_beg_investment_value,string stock3_name, string stock2_name , string stock1_name, string stock1_tkr, string stock2_tkr, string stock3_tkr)
         {
-            string userInput = "AAPL";
-            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={userInput}&outputsize=full&apikey=apikey");
-            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
-            //hiding api key
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            portfolioEntities ORM = new portfolioEntities();
+            Portfolio_Table port = new Portfolio_Table();
 
-            //if (response.StatusCode == HttpStatusCode.OK) //Ok is the 200 status
-            //{
-            StreamReader data = new StreamReader(response.GetResponseStream());
-            string stock = data.ReadToEnd();
+            port.stock1_tkr = stock1_tkr;
+            port.stock2_tkr = stock2_tkr;
+            port.stock3_tkr = stock3_tkr;
+            port.stock1_name = stock1_name;
+            port.stock2_name = stock2_name;
+            port.stock3_name = stock3_name;
+            port.stock1_beg_investment_value = stock1_beg_investment_value;
+            port.stock2_beg_investment_value = stock2_beg_investment_value;
+            port.stock3_beg_investment_value = stock3_beg_investment_value;
+
+
+
+            ORM.Portfolio_Table.Add(port);
+
+            ORM.SaveChanges();
+
+
+            return View();
+        }
+
+        //public string StockSymbol(string userInput)
+        //{
+        //     //= "AAPL";
+        //    HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={userInput}&outputsize=full&apikey=apikey");
+        //    request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+        //    //hiding api key
+
+        //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+        //    //if (response.StatusCode == HttpStatusCode.OK) //Ok is the 200 status
+        //    //{
+        //    StreamReader data = new StreamReader(response.GetResponseStream());
+        //    string stock = data.ReadToEnd();
           
 
-            ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
-            JObject JsonData = JObject.Parse(stock);
-            string symbol = JsonData["Meta Data"]["2. Symbol"].ToString();
-            //ViewBag.StockData2 = JsonData["Time Series (Daily)"][date]["4. close"];
-            return symbol;
-        }
+        //    ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
+        //    JObject JsonData = JObject.Parse(stock);
+        //    string symbol = JsonData["Meta Data"]["2. Symbol"].ToString();
+        //    //ViewBag.StockData2 = JsonData["Time Series (Daily)"][date]["4. close"];
+        //    return symbol;
+        //}
 
 
 
