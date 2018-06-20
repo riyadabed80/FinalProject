@@ -18,7 +18,6 @@ namespace FinalProjectPortfolio.Controllers
         {
             return View();
         }
-
         
         public ActionResult NewsOfTheDay(string historicalDate)
         {
@@ -45,21 +44,19 @@ namespace FinalProjectPortfolio.Controllers
 
         public ActionResult SaveSymbol(decimal stock3_beg_investment_value, decimal stock2_beg_investment_value, decimal stock1_beg_investment_value,string stock3_name, string stock2_name , string stock1_name, string stock1_tkr, string stock2_tkr, string stock3_tkr)
         {
-
             portfolioEntities ORM = new portfolioEntities();
-            Portfolio_Table port = new Portfolio_Table();
-
-            port.stock1_tkr = stock1_tkr;
-            port.stock2_tkr = stock2_tkr;
-            port.stock3_tkr = stock3_tkr;
-            port.stock1_name = stock1_name;
-            port.stock2_name = stock2_name;
-            port.stock3_name = stock3_name;
-            port.stock1_beg_investment_value = stock1_beg_investment_value;
-            port.stock2_beg_investment_value = stock2_beg_investment_value;
-            port.stock3_beg_investment_value = stock3_beg_investment_value;
-
-
+            Portfolio_Table port = new Portfolio_Table
+            {
+                stock1_tkr = stock1_tkr,
+                stock2_tkr = stock2_tkr,
+                stock3_tkr = stock3_tkr,
+                stock1_name = stock1_name,
+                stock2_name = stock2_name,
+                stock3_name = stock3_name,
+                stock1_beg_investment_value = stock1_beg_investment_value,
+                stock2_beg_investment_value = stock2_beg_investment_value,
+                stock3_beg_investment_value = stock3_beg_investment_value
+            };
 
             ORM.Portfolio_Table.Add(port);
 
@@ -90,8 +87,6 @@ namespace FinalProjectPortfolio.Controllers
         //    //ViewBag.StockData2 = JsonData["Time Series (Daily)"][date]["4. close"];
         //    return symbol;
         //}
-
-
 
         public static double HistoricalSharePrice(string symbol, string historicalDate)
         {
@@ -151,6 +146,7 @@ namespace FinalProjectPortfolio.Controllers
             return closingSharePrice;
 
         }
+
         public static double NumberOfShares(double begInvestmentValue, double begSharePrice)
         {
             //gives number of shares
@@ -178,8 +174,6 @@ namespace FinalProjectPortfolio.Controllers
             double percentIncrease = endingInvestmentValue / begInvestmentValue;
             return percentIncrease;
         }
-
-
 
         public static double TotalAmountGained(double endingInvestmentValue, double begInvestmentValue)
         {
