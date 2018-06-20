@@ -137,7 +137,7 @@ namespace FinalProjectPortfolio.Controllers
             return numberOfShares;
         }
 
-        public static double currentValue (double closingSharePrice, double numberOfShares)
+        public static double currentValue(double closingSharePrice, double numberOfShares)
         {
             //gives the new current value
             double newValue = closingSharePrice * numberOfShares;
@@ -161,6 +161,11 @@ namespace FinalProjectPortfolio.Controllers
         public ActionResult StockSelector()
         {
 
+            return View();
+        }
+
+        public ActionResult Portfolio()
+        {
             return View();
         }
 
