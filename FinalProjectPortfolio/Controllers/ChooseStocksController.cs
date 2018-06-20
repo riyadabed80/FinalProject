@@ -13,12 +13,39 @@ namespace FinalProjectPortfolio.Controllers
 {
     public class ChooseStocksController : Controller
     {
+        /* this action take the user input and save it to DB */
+        public ActionResult SaveSymbol(DateTime stock1_date, DateTime stock2_date, DateTime stock3_date, decimal stock3_beg_investment_value, decimal stock2_beg_investment_value, decimal stock1_beg_investment_value, string stock3_name, string stock2_name, string stock1_name, string stock1_tkr, string stock2_tkr, string stock3_tkr)
+        {
+            portfolioEntities ORM = new portfolioEntities();
+            Portfolio_Table port = new Portfolio_Table
+            {
+                stock1_tkr = stock1_tkr,
+                stock2_tkr = stock2_tkr,
+                stock3_tkr = stock3_tkr,
+                stock1_name = stock1_name,
+                stock2_name = stock2_name,
+                stock3_name = stock3_name,
+                stock1_beg_investment_value = stock1_beg_investment_value,
+                stock2_beg_investment_value = stock2_beg_investment_value,
+                stock3_beg_investment_value = stock3_beg_investment_value,
+                stock1_date = stock1_date,
+                stock2_date = stock2_date,
+                stock3_date = stock3_date,
+            };
+            ORM.Portfolio_Table.Add(port);
+
+            ORM.SaveChanges();
+
+            //ViewBag.Data = ;
+            return View(ORM.Portfolio_Table.ToList());
+        }
+
         // GET: ChooseStocks
         public ActionResult Index()
         {
             return View();
         }
-        
+
         public ActionResult NewsOfTheDay(string historicalDate)
         {
 
@@ -42,29 +69,6 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-        public ActionResult SaveSymbol(decimal stock3_beg_investment_value, decimal stock2_beg_investment_value, decimal stock1_beg_investment_value,string stock3_name, string stock2_name , string stock1_name, string stock1_tkr, string stock2_tkr, string stock3_tkr)
-        {
-            portfolioEntities ORM = new portfolioEntities();
-            Portfolio_Table port = new Portfolio_Table
-            {
-                stock1_tkr = stock1_tkr,
-                stock2_tkr = stock2_tkr,
-                stock3_tkr = stock3_tkr,
-                stock1_name = stock1_name,
-                stock2_name = stock2_name,
-                stock3_name = stock3_name,
-                stock1_beg_investment_value = stock1_beg_investment_value,
-                stock2_beg_investment_value = stock2_beg_investment_value,
-                stock3_beg_investment_value = stock3_beg_investment_value
-            };
-
-            ORM.Portfolio_Table.Add(port);
-
-            ORM.SaveChanges();
-
-            //ViewBag.Data = ;
-            return View(ORM.Portfolio_Table.ToList());
-        }
 
         //public string StockSymbol(string userInput)
         //{
@@ -79,7 +83,7 @@ namespace FinalProjectPortfolio.Controllers
         //    //{
         //    StreamReader data = new StreamReader(response.GetResponseStream());
         //    string stock = data.ReadToEnd();
-          
+
 
         //    ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
         //    JObject JsonData = JObject.Parse(stock);
@@ -102,7 +106,7 @@ namespace FinalProjectPortfolio.Controllers
             string stockprice = data.ReadToEnd();
             //string date = "2018-06-12";
             //string now = 
-       
+
 
             ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
             JObject JsonData = JObject.Parse(stockprice);
@@ -137,7 +141,7 @@ namespace FinalProjectPortfolio.Controllers
             JObject JsonData = JObject.Parse(stockprice);
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
-            
+
             double closingSharePrice = Double.Parse(JsonData["Time Series (1min)"]["2018-06-19 11:00:00"]["4. close"].ToString());
 
             //ViewBag.UserPrice = userPrice;
@@ -193,6 +197,6 @@ namespace FinalProjectPortfolio.Controllers
             return View();
         }
 
-        
+
     }
 }

@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f53200c49bfa400a817bacd1c081e9b7" Name="Diagram1">
-        <EntityTypeShape EntityType="portfolioModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="portfolioModel.C__MigrationHistory" Width="1.5" PointX="7.625" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="portfolioModel.Portfolio_Table" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="portfolioModel.Portfolio_Table" Width="1.5" PointX="9.875" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="portfolioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="portfolioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="portfolioModel.AspNetUserRoles" ManuallyRouted="false" />
