@@ -33,9 +33,7 @@ namespace FinalProjectPortfolio.Controllers
                 stock3_date = stock3_date,
             };
             ORM.Portfolio_Table.Add(port);
-
             ORM.SaveChanges();
-
             //ViewBag.Data = ;
             return View(ORM.Portfolio_Table.ToList());
         }
