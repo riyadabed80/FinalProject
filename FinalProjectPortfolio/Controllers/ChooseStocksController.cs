@@ -19,6 +19,7 @@ namespace FinalProjectPortfolio.Controllers
             return View();
         }
 
+        
         public ActionResult NewsOfTheDay(string historicalDate)
         {
 
@@ -64,8 +65,8 @@ namespace FinalProjectPortfolio.Controllers
 
             ORM.SaveChanges();
 
-
-            return View();
+            //ViewBag.Data = ;
+            return View(ORM.Portfolio_Table.ToList());
         }
 
         //public string StockSymbol(string userInput)
@@ -177,6 +178,8 @@ namespace FinalProjectPortfolio.Controllers
             double percentIncrease = endingInvestmentValue / begInvestmentValue;
             return percentIncrease;
         }
+
+
 
         public static double TotalAmountGained(double endingInvestmentValue, double begInvestmentValue)
         {
