@@ -19,26 +19,26 @@ namespace FinalProjectPortfolio.Models
         public string stock1_name { get; set; }
         public string stock1_tkr { get; set; }
         public decimal stock1_beg_investment_value { get; set; }
-        public Nullable<decimal> stock1_beg_share_price { get; set; }
-        public Nullable<int> stock1_no_shares { get; set; }
-        public Nullable<decimal> stock1_closing_share_price { get; set; }
-        public Nullable<decimal> stock1_ending_investment_value { get; set; }
+        public decimal stock1_beg_share_price { get; set; }
+        public int stock1_no_shares { get; set; }
+        public decimal stock1_closing_share_price { get; set; }
+        public decimal stock1_ending_investment_value { get; set; }
         public string stock2_date { get; set; }
         public string stock2_name { get; set; }
         public string stock2_tkr { get; set; }
         public decimal stock2_beg_investment_value { get; set; }
-        public Nullable<decimal> stock2_beg_share_price { get; set; }
-        public Nullable<int> stock2_no_shares { get; set; }
-        public Nullable<decimal> stock2_closing_share_price { get; set; }
-        public Nullable<decimal> stock2_ending_investment_value { get; set; }
+        public decimal stock2_beg_share_price { get; set; }
+        public int stock2_no_shares { get; set; }
+        public decimal stock2_closing_share_price { get; set; }
+        public decimal stock2_ending_investment_value { get; set; }
         public string stock3_date { get; set; }
         public string stock3_name { get; set; }
         public string stock3_tkr { get; set; }
-        public Nullable<decimal> stock3_beg_investment_value { get; set; }
-        public Nullable<decimal> stock3_beg_share_price { get; set; }
-        public Nullable<int> stock3_no_shares { get; set; }
-        public Nullable<decimal> stock3_closing_share_price { get; set; }
-        public Nullable<decimal> stock3_ending_investment_value { get; set; }
+        public decimal stock3_beg_investment_value { get; set; }
+        public decimal stock3_beg_share_price { get; set; }
+        public int stock3_no_shares { get; set; }
+        public decimal stock3_closing_share_price { get; set; }
+        public decimal stock3_ending_investment_value { get; set; }
         public string userID { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
