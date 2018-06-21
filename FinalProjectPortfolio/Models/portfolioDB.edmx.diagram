@@ -10,10 +10,11 @@
         <EntityTypeShape EntityType="portfolioModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="portfolioModel.Portfolio_Table" Width="1.5" PointX="9.875" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="portfolioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="portfolioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="portfolioModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="portfolioModel.Portfolio_Table" Width="1.5" PointX="5.25" PointY="7.125" />
+        <AssociationConnector Association="portfolioModel.FK_Portfolio_Table_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -20,6 +20,7 @@ namespace FinalProjectPortfolio.Models
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetRoles = new HashSet<AspNetRole>();
+            this.Portfolio_Table = new HashSet<Portfolio_Table>();
         }
     
         public string Id { get; set; }
@@ -41,5 +42,7 @@ namespace FinalProjectPortfolio.Models
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Portfolio_Table> Portfolio_Table { get; set; }
     }
 }

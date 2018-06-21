@@ -71,7 +71,7 @@
             <PropertyRef Name="portfolioID" />
           </Key>
           <Property Name="portfolioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="stock1_date" Type="datetime" Nullable="false" />
+          <Property Name="stock1_date" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="stock1_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="stock1_tkr" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="stock1_beg_investment_value" Type="money" Nullable="false" />
@@ -79,7 +79,7 @@
           <Property Name="stock1_no_shares" Type="int" />
           <Property Name="stock1_closing_share_price" Type="money" />
           <Property Name="stock1_ending_investment_value" Type="money" />
-          <Property Name="stock2_date" Type="datetime" Nullable="false" />
+          <Property Name="stock2_date" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="stock2_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="stock2_tkr" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="stock2_beg_investment_value" Type="money" Nullable="false" />
@@ -87,7 +87,7 @@
           <Property Name="stock2_no_shares" Type="int" />
           <Property Name="stock2_closing_share_price" Type="money" />
           <Property Name="stock2_ending_investment_value" Type="money" />
-          <Property Name="stock3_date" Type="datetime" Nullable="false" />
+          <Property Name="stock3_date" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="stock3_name" Type="nvarchar" MaxLength="50" />
           <Property Name="stock3_tkr" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="stock3_beg_investment_value" Type="money" />
@@ -95,6 +95,7 @@
           <Property Name="stock3_no_shares" Type="int" />
           <Property Name="stock3_closing_share_price" Type="money" />
           <Property Name="stock3_ending_investment_value" Type="money" />
+          <Property Name="userID" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -152,6 +153,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Portfolio_Table_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Portfolio_Table" Type="Self.Portfolio_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Portfolio_Table">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="portfolioModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -175,6 +188,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Portfolio_Table_AspNetUsers" Association="Self.FK_Portfolio_Table_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Portfolio_Table" EntitySet="Portfolio_Table" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -239,36 +256,7 @@
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-        </EntityType>
-        <EntityType Name="Portfolio_Table">
-          <Key>
-            <PropertyRef Name="portfolioID" />
-          </Key>
-          <Property Name="portfolioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="stock1_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="stock1_tkr" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="stock1_beg_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="stock1_beg_share_price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock1_no_shares" Type="Int32" />
-          <Property Name="stock1_closing_share_price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock1_ending_investment_value" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock2_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="stock2_tkr" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="stock2_beg_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="stock2_beg_share_price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock2_no_shares" Type="Int32" />
-          <Property Name="stock2_closing_share_price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock2_ending_investment_value" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock3_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="stock3_tkr" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="stock3_beg_investment_value" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock3_beg_share_price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock3_no_shares" Type="Int32" />
-          <Property Name="stock3_closing_share_price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock3_ending_investment_value" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="stock1_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="stock2_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="stock3_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Portfolio_Table" Relationship="portfolioModel.FK_Portfolio_Table_AspNetUsers" FromRole="AspNetUser" ToRole="Portfolio_Table" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -308,7 +296,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Portfolio_Table" EntityType="Self.Portfolio_Table" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -321,7 +308,56 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Portfolio_Table" EntityType="portfolioModel.Portfolio_Table" />
+          <AssociationSet Name="FK_Portfolio_Table_AspNetUsers" Association="portfolioModel.FK_Portfolio_Table_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Portfolio_Table" EntitySet="Portfolio_Table" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Portfolio_Table">
+          <Key>
+            <PropertyRef Name="portfolioID" />
+          </Key>
+          <Property Name="portfolioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stock1_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock1_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock1_tkr" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="stock1_beg_investment_value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="stock1_beg_share_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock1_no_shares" Type="Int32" />
+          <Property Name="stock1_closing_share_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock1_ending_investment_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock2_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock2_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock2_tkr" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="stock2_beg_investment_value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="stock2_beg_share_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock2_no_shares" Type="Int32" />
+          <Property Name="stock2_closing_share_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock2_ending_investment_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock3_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock3_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock3_tkr" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="stock3_beg_investment_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock3_beg_share_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock3_no_shares" Type="Int32" />
+          <Property Name="stock3_closing_share_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock3_ending_investment_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="userID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="portfolioModel.FK_Portfolio_Table_AspNetUsers" FromRole="Portfolio_Table" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="FK_Portfolio_Table_AspNetUsers">
+          <End Type="portfolioModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="portfolioModel.Portfolio_Table" Role="Portfolio_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Portfolio_Table">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -383,37 +419,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Portfolio_Table">
-            <EntityTypeMapping TypeName="portfolioModel.Portfolio_Table">
-              <MappingFragment StoreEntitySet="Portfolio_Table">
-                <ScalarProperty Name="stock3_date" ColumnName="stock3_date" />
-                <ScalarProperty Name="stock2_date" ColumnName="stock2_date" />
-                <ScalarProperty Name="stock1_date" ColumnName="stock1_date" />
-                <ScalarProperty Name="portfolioID" ColumnName="portfolioID" />
-                <ScalarProperty Name="stock1_name" ColumnName="stock1_name" />
-                <ScalarProperty Name="stock1_tkr" ColumnName="stock1_tkr" />
-                <ScalarProperty Name="stock1_beg_investment_value" ColumnName="stock1_beg_investment_value" />
-                <ScalarProperty Name="stock1_beg_share_price" ColumnName="stock1_beg_share_price" />
-                <ScalarProperty Name="stock1_no_shares" ColumnName="stock1_no_shares" />
-                <ScalarProperty Name="stock1_closing_share_price" ColumnName="stock1_closing_share_price" />
-                <ScalarProperty Name="stock1_ending_investment_value" ColumnName="stock1_ending_investment_value" />
-                <ScalarProperty Name="stock2_name" ColumnName="stock2_name" />
-                <ScalarProperty Name="stock2_tkr" ColumnName="stock2_tkr" />
-                <ScalarProperty Name="stock2_beg_investment_value" ColumnName="stock2_beg_investment_value" />
-                <ScalarProperty Name="stock2_beg_share_price" ColumnName="stock2_beg_share_price" />
-                <ScalarProperty Name="stock2_no_shares" ColumnName="stock2_no_shares" />
-                <ScalarProperty Name="stock2_closing_share_price" ColumnName="stock2_closing_share_price" />
-                <ScalarProperty Name="stock2_ending_investment_value" ColumnName="stock2_ending_investment_value" />
-                <ScalarProperty Name="stock3_name" ColumnName="stock3_name" />
-                <ScalarProperty Name="stock3_tkr" ColumnName="stock3_tkr" />
-                <ScalarProperty Name="stock3_beg_investment_value" ColumnName="stock3_beg_investment_value" />
-                <ScalarProperty Name="stock3_beg_share_price" ColumnName="stock3_beg_share_price" />
-                <ScalarProperty Name="stock3_no_shares" ColumnName="stock3_no_shares" />
-                <ScalarProperty Name="stock3_closing_share_price" ColumnName="stock3_closing_share_price" />
-                <ScalarProperty Name="stock3_ending_investment_value" ColumnName="stock3_ending_investment_value" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="portfolioModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
@@ -422,6 +427,38 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Portfolio_Table">
+            <EntityTypeMapping TypeName="portfolioModel.Portfolio_Table">
+              <MappingFragment StoreEntitySet="Portfolio_Table">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="stock3_ending_investment_value" ColumnName="stock3_ending_investment_value" />
+                <ScalarProperty Name="stock3_closing_share_price" ColumnName="stock3_closing_share_price" />
+                <ScalarProperty Name="stock3_no_shares" ColumnName="stock3_no_shares" />
+                <ScalarProperty Name="stock3_beg_share_price" ColumnName="stock3_beg_share_price" />
+                <ScalarProperty Name="stock3_beg_investment_value" ColumnName="stock3_beg_investment_value" />
+                <ScalarProperty Name="stock3_tkr" ColumnName="stock3_tkr" />
+                <ScalarProperty Name="stock3_name" ColumnName="stock3_name" />
+                <ScalarProperty Name="stock3_date" ColumnName="stock3_date" />
+                <ScalarProperty Name="stock2_ending_investment_value" ColumnName="stock2_ending_investment_value" />
+                <ScalarProperty Name="stock2_closing_share_price" ColumnName="stock2_closing_share_price" />
+                <ScalarProperty Name="stock2_no_shares" ColumnName="stock2_no_shares" />
+                <ScalarProperty Name="stock2_beg_share_price" ColumnName="stock2_beg_share_price" />
+                <ScalarProperty Name="stock2_beg_investment_value" ColumnName="stock2_beg_investment_value" />
+                <ScalarProperty Name="stock2_tkr" ColumnName="stock2_tkr" />
+                <ScalarProperty Name="stock2_name" ColumnName="stock2_name" />
+                <ScalarProperty Name="stock2_date" ColumnName="stock2_date" />
+                <ScalarProperty Name="stock1_ending_investment_value" ColumnName="stock1_ending_investment_value" />
+                <ScalarProperty Name="stock1_closing_share_price" ColumnName="stock1_closing_share_price" />
+                <ScalarProperty Name="stock1_no_shares" ColumnName="stock1_no_shares" />
+                <ScalarProperty Name="stock1_beg_share_price" ColumnName="stock1_beg_share_price" />
+                <ScalarProperty Name="stock1_beg_investment_value" ColumnName="stock1_beg_investment_value" />
+                <ScalarProperty Name="stock1_tkr" ColumnName="stock1_tkr" />
+                <ScalarProperty Name="stock1_name" ColumnName="stock1_name" />
+                <ScalarProperty Name="stock1_date" ColumnName="stock1_date" />
+                <ScalarProperty Name="portfolioID" ColumnName="portfolioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
