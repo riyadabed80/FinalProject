@@ -17,7 +17,6 @@ namespace FinalProjectPortfolio.Controllers
         public ActionResult SaveSymbol(Portfolio_Table port)
         { 
             portfolioEntities ORM = new portfolioEntities();
-
                
                 port.stock1_beg_share_price = HistoricalSharePrice(port.stock1_tkr, port.stock1_date);
                 port.stock2_beg_share_price = HistoricalSharePrice(port.stock2_tkr, port.stock2_date);
@@ -31,9 +30,6 @@ namespace FinalProjectPortfolio.Controllers
                 port.stock1_ending_investment_value = port.stock1_no_shares * port.stock1_closing_share_price;
                 port.stock2_ending_investment_value = port.stock2_no_shares * port.stock2_closing_share_price;
                 port.stock3_ending_investment_value = port.stock3_no_shares * port.stock3_closing_share_price;
-
-
-
 
             ORM.Portfolio_Table.Add(port);
             ORM.SaveChanges();
@@ -70,7 +66,6 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-
         //public string StockSymbol(string userInput)
         //{
         //     //= "AAPL";
@@ -93,7 +88,7 @@ namespace FinalProjectPortfolio.Controllers
         //    return symbol;
         //}
 
-        public static decimal HistoricalSharePrice(string symbol, string historicalDate)
+        public static decimal HistoricalSharePrice(string symbol, string historicalDate)    
         {
             HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey=apikey");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
