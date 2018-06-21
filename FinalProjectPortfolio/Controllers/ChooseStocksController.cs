@@ -18,24 +18,13 @@ namespace FinalProjectPortfolio.Controllers
         { 
             portfolioEntities ORM = new portfolioEntities();
 
-                port.stock1_tkr = port.stock1_tkr;
-                port.stock2_tkr = port.stock2_tkr;
-                port.stock3_tkr = port.stock3_tkr;
-                port.stock1_name = port.stock1_name;
-                port.stock2_name = port.stock2_name;
-                port.stock3_name = port.stock3_name;
-                port.stock1_date = port.stock1_date;
-                port.stock2_date = port.stock2_date;
-                port.stock3_date = port.stock3_date;
+               
                 port.stock1_beg_share_price = HistoricalSharePrice(port.stock1_tkr, port.stock1_date);
                 port.stock2_beg_share_price = HistoricalSharePrice(port.stock2_tkr, port.stock2_date);
                 port.stock3_beg_share_price = HistoricalSharePrice(port.stock3_tkr, port.stock3_date);
                 port.stock1_closing_share_price = TodaySharePrice(port.stock1_tkr);
                 port.stock2_closing_share_price = TodaySharePrice(port.stock2_tkr);
                 port.stock3_closing_share_price = TodaySharePrice(port.stock3_tkr);
-                port.stock1_beg_investment_value = port.stock1_beg_investment_value;
-                port.stock2_beg_investment_value = port.stock2_beg_investment_value;
-                port.stock3_beg_investment_value = port.stock3_beg_investment_value;
                 port.stock1_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock1_beg_share_price);
                 port.stock2_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock2_beg_share_price);
                 port.stock3_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock3_beg_share_price);
