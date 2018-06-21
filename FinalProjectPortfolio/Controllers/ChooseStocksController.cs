@@ -14,28 +14,42 @@ namespace FinalProjectPortfolio.Controllers
     public class ChooseStocksController : Controller
     {
         /* this action take the user input and save it to DB */
-        public ActionResult SaveSymbol(DateTime stock1_date, DateTime stock2_date, DateTime stock3_date, decimal stock3_beg_investment_value, decimal stock2_beg_investment_value, decimal stock1_beg_investment_value, string stock3_name, string stock2_name, string stock1_name, string stock1_tkr, string stock2_tkr, string stock3_tkr)
-        {
+        public ActionResult SaveSymbol(Portfolio_Table port)
+        { 
             portfolioEntities ORM = new portfolioEntities();
-            Portfolio_Table port = new Portfolio_Table
-            {
-                stock1_tkr = stock1_tkr,
-                stock2_tkr = stock2_tkr,
-                stock3_tkr = stock3_tkr,
-                stock1_name = stock1_name,
-                stock2_name = stock2_name,
-                stock3_name = stock3_name,
-                stock1_beg_investment_value = stock1_beg_investment_value,
-                stock2_beg_investment_value = stock2_beg_investment_value,
-                stock3_beg_investment_value = stock3_beg_investment_value,
-                stock1_date = stock1_date,
-                stock2_date = stock2_date,
-                stock3_date = stock3_date,
-            };
+
+                port.stock1_tkr = port.stock1_tkr;
+                port.stock2_tkr = port.stock2_tkr;
+                port.stock3_tkr = port.stock3_tkr;
+                port.stock1_name = port.stock1_name;
+                port.stock2_name = port.stock2_name;
+                port.stock3_name = port.stock3_name;
+                port.stock1_date = port.stock1_date;
+                port.stock2_date = port.stock2_date;
+                port.stock3_date = port.stock3_date;
+                port.stock1_beg_share_price = HistoricalSharePrice(port.stock1_tkr, port.stock1_date);
+                port.stock2_beg_share_price = HistoricalSharePrice(port.stock2_tkr, port.stock2_date);
+                port.stock3_beg_share_price = HistoricalSharePrice(port.stock3_tkr, port.stock3_date);
+                port.stock1_closing_share_price = TodaySharePrice(port.stock1_tkr);
+                port.stock2_closing_share_price = TodaySharePrice(port.stock2_tkr);
+                port.stock3_closing_share_price = TodaySharePrice(port.stock3_tkr);
+                port.stock1_beg_investment_value = port.stock1_beg_investment_value;
+                port.stock2_beg_investment_value = port.stock2_beg_investment_value;
+                port.stock3_beg_investment_value = port.stock3_beg_investment_value;
+                port.stock1_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock1_beg_share_price);
+                port.stock2_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock2_beg_share_price);
+                port.stock3_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock3_beg_share_price);
+                port.stock1_ending_investment_value = port.stock1_no_shares * port.stock1_closing_share_price;
+                port.stock2_ending_investment_value = port.stock2_no_shares * port.stock2_closing_share_price;
+                port.stock3_ending_investment_value = port.stock3_no_shares * port.stock3_closing_share_price;
+
+
+
+
             ORM.Portfolio_Table.Add(port);
             ORM.SaveChanges();
-            //ViewBag.Data = ;
-            return View(ORM.Portfolio_Table.ToList());
+            ViewBag.StockTable = ORM.Portfolio_Table.ToList();
+            return View();
         }
 
         // GET: ChooseStocks
@@ -90,7 +104,7 @@ namespace FinalProjectPortfolio.Controllers
         //    return symbol;
         //}
 
-        public static double HistoricalSharePrice(string symbol, string historicalDate)
+        public static decimal HistoricalSharePrice(string symbol, string historicalDate)
         {
             HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey=apikey");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
@@ -109,7 +123,7 @@ namespace FinalProjectPortfolio.Controllers
             ////ViewBag.RawData = data.ReadToEnd(); //read all the response data
             JObject JsonData = JObject.Parse(stockprice);
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
-            double begSharePrice = Double.Parse(JsonData["Time Series (Daily)"][historicalDate]["4. close"].ToString());
+            decimal begSharePrice = Decimal.Parse(JsonData["Time Series (Daily)"][historicalDate]["4. close"].ToString());
             //double todayPrice = Double.Parse(JsonData["Time Series (Daily)"][now]["4. close"].ToString());
 
             //ViewBag.UserPrice = userPrice;
@@ -119,7 +133,7 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-        public static double TodaySharePrice(string symbol)
+        public static decimal TodaySharePrice(string symbol)
         {
             HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=1min&apikey=apikey");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
@@ -140,7 +154,7 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            double closingSharePrice = Double.Parse(JsonData["Time Series (1min)"]["2018-06-19 11:00:00"]["4. close"].ToString());
+            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (1min)"]["2018-06-21 11:00:00"]["4. close"].ToString());
 
             //ViewBag.UserPrice = userPrice;
             //ViewBag.TodayPrice = todayPrice;
@@ -149,10 +163,10 @@ namespace FinalProjectPortfolio.Controllers
 
         }
 
-        public static double NumberOfShares(double begInvestmentValue, double begSharePrice)
+        public static int NumberOfShares(decimal begInvestmentValue, decimal begSharePrice)
         {
             //gives number of shares
-            double numberOfShares = begInvestmentValue / begSharePrice;
+            int  numberOfShares = Convert.ToInt32(begInvestmentValue / begSharePrice);
             //current value
             //double currentValue = todaySharePrice * numberOfShares;
 
