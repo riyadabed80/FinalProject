@@ -8,7 +8,13 @@
 
 @*<a href="/Home/ChooseStocks/StockSelector">Add a New Portfolio</a>*@
 
-
+<script>
+$(function() {
+ $( "#datepicker" ).datepicker({
+ beforeShowDay: $.datepicker.noWeekends
+ });
+ });
+</script>
 <h2 align="center">Welcome to the Grand Circus Stock Selector</h2>
 <hr />
 <form action="../ChooseStocks/SaveSymbol" method="post">
@@ -24,7 +30,7 @@
 
     <div class="form-group">
         <label>Date</label>
-        <input type="date" min="1998-06-19" max="2018-06-19" name="stock1_date" class="form-control"/>
+        <input type="date" min="1998-06-19" max="2018-06-19" name="stock1_date" class="form-control" id="datepicker"/>
     </div>
 
     <div class="form-group">

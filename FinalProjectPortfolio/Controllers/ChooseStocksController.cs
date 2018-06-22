@@ -214,7 +214,7 @@ namespace FinalProjectPortfolio.Controllers
             decimal profit = endingInvestmentValue - begInvestmentValue;
             return profit;
         }
-
+        [Authorize]
         public ActionResult StockSelector()
         {
 

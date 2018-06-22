@@ -230,10 +230,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Dueling_lightsabers.png" />
+    <Content Include="Content\Images\LafIK.gif" />
     <Content Include="Content\Images\Money.jpg" />
     <Content Include="Content\Images\phone.png" />
     <Content Include="Content\Images\Ticker.jpg" />
     <Content Include="Content\Images\yoda-edit.png" />
+    <Content Include="Content\Images\yoda.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

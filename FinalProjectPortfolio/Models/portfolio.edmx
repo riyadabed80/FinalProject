@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="portfolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="portfolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -83,7 +83,8 @@
             <End Role="Portfolios" EntitySet="Portfolios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="portfolioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -135,17 +136,17 @@
           <Property Name="stock3_closing_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="stock3_ending_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="userID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Portfolio_Table_AspNetUsers" FromRole="Portfolios" ToRole="AspNetUsers" />
-          <Property Name="profitloss1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="percentage1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="profitloss2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="percentage2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="profitloss3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="percentage3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="profitloss1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="percentage1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="profitloss2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="percentage2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="profitloss3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="percentage3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="totalbegining" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="totalending" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="totalprofiit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="totalpercentage" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Portfolio_Table_AspNetUsers" FromRole="Portfolios" ToRole="AspNetUsers" />
         </EntityType>
         <Association Name="FK_Portfolio_Table_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
@@ -198,12 +199,6 @@
                 <ScalarProperty Name="totalprofiit" ColumnName="totalprofiit" />
                 <ScalarProperty Name="totalending" ColumnName="totalending" />
                 <ScalarProperty Name="totalbegining" ColumnName="totalbegining" />
-                <ScalarProperty Name="percentage3" ColumnName="percentage3" />
-                <ScalarProperty Name="profitloss3" ColumnName="profitloss3" />
-                <ScalarProperty Name="percentage2" ColumnName="percentage2" />
-                <ScalarProperty Name="profitloss2" ColumnName="profitloss2" />
-                <ScalarProperty Name="percentage1" ColumnName="percentage1" />
-                <ScalarProperty Name="profitloss1" ColumnName="profitloss1" />
                 <ScalarProperty Name="portfolioID" ColumnName="portfolioID" />
                 <ScalarProperty Name="stock1_date" ColumnName="stock1_date" />
                 <ScalarProperty Name="stock1_name" ColumnName="stock1_name" />
@@ -230,6 +225,12 @@
                 <ScalarProperty Name="stock3_closing_share_price" ColumnName="stock3_closing_share_price" />
                 <ScalarProperty Name="stock3_ending_investment_value" ColumnName="stock3_ending_investment_value" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="profitloss1" ColumnName="profitloss1" />
+                <ScalarProperty Name="percentage1" ColumnName="percentage1" />
+                <ScalarProperty Name="profitloss2" ColumnName="profitloss2" />
+                <ScalarProperty Name="percentage2" ColumnName="percentage2" />
+                <ScalarProperty Name="profitloss3" ColumnName="profitloss3" />
+                <ScalarProperty Name="percentage3" ColumnName="percentage3" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

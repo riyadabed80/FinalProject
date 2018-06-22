@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dbf4609225ad483ea8b52ab1da29dbf2" Name="Diagram1">
-        <EntityTypeShape EntityType="portfolioModel.AspNetUser" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="portfolioModel.Portfolio" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+      <Diagram DiagramId="6e69e9fa7e3d4e9497eb6ff654d49020" Name="Diagram1">
+        <EntityTypeShape EntityType="portfolioModel.AspNetUser" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="portfolioModel.Portfolio" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="portfolioModel.FK_Portfolio_Table_AspNetUsers" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
