@@ -46,6 +46,10 @@ namespace FinalProjectPortfolio.Models
         public decimal percentage2 { get; set; }
         public decimal profitloss3 { get; set; }
         public decimal percentage3 { get; set; }
+        public decimal totalbegining { get; set; }
+        public decimal totalending { get; set; }
+        public decimal totalprofiit { get; set; }
+        public decimal totalpercentage { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
     }

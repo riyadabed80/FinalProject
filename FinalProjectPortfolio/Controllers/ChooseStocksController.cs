@@ -37,13 +37,13 @@ namespace FinalProjectPortfolio.Controllers
             port.profitloss1 = TotalAmountGained(port.stock1_ending_investment_value, port.stock1_beg_investment_value);
             port.profitloss2 = TotalAmountGained(port.stock2_ending_investment_value, port.stock2_beg_investment_value);
             port.profitloss3 = TotalAmountGained(port.stock3_ending_investment_value, port.stock3_beg_investment_value);
-            port.percentage1 = 100*(Percentage(port.stock1_ending_investment_value, port.stock1_beg_investment_value));
-            port.percentage2 = 100*(Percentage(port.stock2_ending_investment_value, port.stock2_beg_investment_value));
-            port.percentage3 = 100*(Percentage(port.stock3_ending_investment_value, port.stock3_beg_investment_value));
-            //decimal totalbeginning = port.stock1_beg_investment_value + port.stock2_beg_investment_value + port.stock3_beg_investment_value;
-            //decimal totalending = port.stock1_ending_investment_value + port.stock2_ending_investment_value + port.stock3_ending_investment_value;
-            //decimal totalprofit = port.profitloss1 + port.profitloss2 + port.profitloss3;
-            //decimal totalpercentage = port.percentage1 + port.percentage2 + port.percentage3;
+            port.percentage1 = Percentage(port.stock1_ending_investment_value, port.stock1_beg_investment_value);
+            port.percentage2 = Percentage(port.stock2_ending_investment_value, port.stock2_beg_investment_value);
+            port.percentage3 = Percentage(port.stock3_ending_investment_value, port.stock3_beg_investment_value);
+            port.totalbegining = (port.stock1_beg_investment_value+port.stock2_beg_investment_value+port.stock3_beg_investment_value);
+            port.totalending = port.stock1_ending_investment_value + port.stock2_ending_investment_value + port.stock3_ending_investment_value;
+            port.totalprofiit= port.profitloss1 + port.profitloss2 + port.profitloss3;
+            port.totalpercentage = ((port.totalending-port.totalbegining)/5000)*100;
 
             ORM.Portfolios.Add(port);
 
@@ -171,7 +171,7 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (1min)"]["2018-06-22 13:00:00"]["4. close"].ToString());
+            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (1min)"]["2018-06-22 15:00:00"]["4. close"].ToString());
 
             //ViewBag.UserPrice = userPrice;
             //ViewBag.TodayPrice = todayPrice;

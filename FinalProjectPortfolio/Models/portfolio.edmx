@@ -58,6 +58,10 @@
           <Property Name="percentage2" Type="money" Nullable="false" />
           <Property Name="profitloss3" Type="money" Nullable="false" />
           <Property Name="percentage3" Type="money" Nullable="false" />
+          <Property Name="totalbegining" Type="money" Nullable="false" />
+          <Property Name="totalending" Type="money" Nullable="false" />
+          <Property Name="totalprofiit" Type="money" Nullable="false" />
+          <Property Name="totalpercentage" Type="money" Nullable="false" />
         </EntityType>
         <Association Name="FK_Portfolio_Table_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -138,6 +142,10 @@
           <Property Name="percentage2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="profitloss3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="percentage3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="totalbegining" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="totalending" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="totalprofiit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="totalpercentage" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <Association Name="FK_Portfolio_Table_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
@@ -186,6 +194,10 @@
           <EntitySetMapping Name="Portfolios">
             <EntityTypeMapping TypeName="portfolioModel.Portfolio">
               <MappingFragment StoreEntitySet="Portfolios">
+                <ScalarProperty Name="totalpercentage" ColumnName="totalpercentage" />
+                <ScalarProperty Name="totalprofiit" ColumnName="totalprofiit" />
+                <ScalarProperty Name="totalending" ColumnName="totalending" />
+                <ScalarProperty Name="totalbegining" ColumnName="totalbegining" />
                 <ScalarProperty Name="percentage3" ColumnName="percentage3" />
                 <ScalarProperty Name="profitloss3" ColumnName="profitloss3" />
                 <ScalarProperty Name="percentage2" ColumnName="percentage2" />

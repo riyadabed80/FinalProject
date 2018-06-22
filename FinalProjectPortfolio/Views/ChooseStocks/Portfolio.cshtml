@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            Portfolio ID
+        </th>
+        <th>
             Stock Name
         </th>
         <th>
@@ -44,7 +47,7 @@
     @foreach (var portfolio in ViewBag.StockTable)
      {
         <tr>
-
+            <td>@portfolio.portfolioID</td>
             <td>@portfolio.stock1_name</td>
             <td>@portfolio.stock1_tkr</td>
             <td>@portfolio.stock1_beg_investment_value</td>
@@ -76,6 +79,17 @@
             <td>@portfolio.stock3_ending_investment_value</td>
             <td>@portfolio.profitloss3</td>
             <td>@portfolio.percentage3</td>
+        </tr>
+        <tr class="bold">
+            <td></td>
+            <td></td>
+            <td>@portfolio.totalbegining</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@portfolio.totalending</td>
+            <td>@portfolio.totalprofiit</td>
+            <td>@portfolio.totalpercentage</td>
         </tr>
 
      }
