@@ -200,40 +200,28 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>portfolioDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>portfolioDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>portfolioDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>portfolioDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>portfolioDB.tt</DependentUpon>
+      <DependentUpon>portfolio.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\portfolioDB.Context.cs">
+    <Compile Include="Models\portfolio.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>portfolioDB.Context.tt</DependentUpon>
+      <DependentUpon>portfolio.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\portfolioDB.cs">
+    <Compile Include="Models\Portfolio.cs">
+      <DependentUpon>portfolio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\portfolio.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>portfolioDB.tt</DependentUpon>
+      <DependentUpon>portfolio.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\portfolioDB.Designer.cs">
+    <Compile Include="Models\portfolio1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>portfolioDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Portfolio_Table.cs">
-      <DependentUpon>portfolioDB.tt</DependentUpon>
+      <DependentUpon>portfolio.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -249,15 +237,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\portfolioDB.Context.tt">
+    <Content Include="Models\portfolio.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>portfolioDB.edmx</DependentUpon>
-      <LastGenOutput>portfolioDB.Context.cs</LastGenOutput>
+      <DependentUpon>portfolio.edmx</DependentUpon>
+      <LastGenOutput>portfolio.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\portfolioDB.tt">
+    <Content Include="Models\portfolio.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>portfolioDB.edmx</DependentUpon>
-      <LastGenOutput>portfolioDB.cs</LastGenOutput>
+      <DependentUpon>portfolio.edmx</DependentUpon>
+      <LastGenOutput>portfolio1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -265,14 +253,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\ChooseStocks\Portfolio.cshtml" />
-    <EntityDeploy Include="Models\portfolioDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>portfolioDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\portfolioDB.edmx.diagram">
-      <DependentUpon>portfolioDB.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\ChooseStocks\SaveSymbol.cshtml" />
+    <EntityDeploy Include="Models\portfolio.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>portfolio.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\portfolio.edmx.diagram">
+      <DependentUpon>portfolio.edmx</DependentUpon>
+    </Content>
     <None Include="Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

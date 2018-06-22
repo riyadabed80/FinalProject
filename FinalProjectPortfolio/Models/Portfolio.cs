@@ -12,7 +12,7 @@ namespace FinalProjectPortfolio.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Portfolio_Table
+    public partial class Portfolio
     {
         public int portfolioID { get; set; }
         public string stock1_date { get; set; }

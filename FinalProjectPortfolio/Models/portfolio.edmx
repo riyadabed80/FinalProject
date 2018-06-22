@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="portfolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Portfolios">
+          <Key>
+            <PropertyRef Name="portfolioID" />
+          </Key>
+          <Property Name="portfolioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stock1_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock1_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock1_tkr" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="stock1_beg_investment_value" Type="money" Nullable="false" />
+          <Property Name="stock1_beg_share_price" Type="money" Nullable="false" />
+          <Property Name="stock1_no_shares" Type="int" Nullable="false" />
+          <Property Name="stock1_closing_share_price" Type="money" Nullable="false" />
+          <Property Name="stock1_ending_investment_value" Type="money" Nullable="false" />
+          <Property Name="stock2_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock2_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock2_tkr" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="stock2_beg_investment_value" Type="money" Nullable="false" />
+          <Property Name="stock2_beg_share_price" Type="money" Nullable="false" />
+          <Property Name="stock2_no_shares" Type="int" Nullable="false" />
+          <Property Name="stock2_closing_share_price" Type="money" Nullable="false" />
+          <Property Name="stock2_ending_investment_value" Type="money" Nullable="false" />
+          <Property Name="stock3_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock3_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock3_tkr" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="stock3_beg_investment_value" Type="money" Nullable="false" />
+          <Property Name="stock3_beg_share_price" Type="money" Nullable="false" />
+          <Property Name="stock3_no_shares" Type="int" Nullable="false" />
+          <Property Name="stock3_closing_share_price" Type="money" Nullable="false" />
+          <Property Name="stock3_ending_investment_value" Type="money" Nullable="false" />
+          <Property Name="userID" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Portfolio_Table_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Portfolios" Type="Self.Portfolios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Portfolios">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="portfolioModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Portfolios" EntityType="Self.Portfolios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Portfolio_Table_AspNetUsers" Association="Self.FK_Portfolio_Table_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Portfolios" EntitySet="Portfolios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="portfolioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Portfolios" Relationship="Self.FK_Portfolio_Table_AspNetUsers" FromRole="AspNetUsers" ToRole="Portfolios" />
+        </EntityType>
+        <EntityType Name="Portfolio">
+          <Key>
+            <PropertyRef Name="portfolioID" />
+          </Key>
+          <Property Name="portfolioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stock1_date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock1_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock1_tkr" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock1_beg_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock1_beg_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock1_no_shares" Type="Int32" Nullable="false" />
+          <Property Name="stock1_closing_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock1_ending_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock2_date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock2_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock2_tkr" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock2_beg_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock2_beg_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock2_no_shares" Type="Int32" Nullable="false" />
+          <Property Name="stock2_closing_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock2_ending_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock3_date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock3_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock3_tkr" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stock3_beg_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock3_beg_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock3_no_shares" Type="Int32" Nullable="false" />
+          <Property Name="stock3_closing_share_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="stock3_ending_investment_value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="userID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Portfolio_Table_AspNetUsers" FromRole="Portfolios" ToRole="AspNetUsers" />
+        </EntityType>
+        <Association Name="FK_Portfolio_Table_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Portfolios" Type="Self.Portfolio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Portfolios">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="portfolioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Portfolios" EntityType="Self.Portfolio" />
+          <AssociationSet Name="FK_Portfolio_Table_AspNetUsers" Association="Self.FK_Portfolio_Table_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Portfolios" EntitySet="Portfolios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="portfolioModelStoreContainer" CdmEntityContainer="portfolioEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="portfolioModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Portfolios">
+            <EntityTypeMapping TypeName="portfolioModel.Portfolio">
+              <MappingFragment StoreEntitySet="Portfolios">
+                <ScalarProperty Name="portfolioID" ColumnName="portfolioID" />
+                <ScalarProperty Name="stock1_date" ColumnName="stock1_date" />
+                <ScalarProperty Name="stock1_name" ColumnName="stock1_name" />
+                <ScalarProperty Name="stock1_tkr" ColumnName="stock1_tkr" />
+                <ScalarProperty Name="stock1_beg_investment_value" ColumnName="stock1_beg_investment_value" />
+                <ScalarProperty Name="stock1_beg_share_price" ColumnName="stock1_beg_share_price" />
+                <ScalarProperty Name="stock1_no_shares" ColumnName="stock1_no_shares" />
+                <ScalarProperty Name="stock1_closing_share_price" ColumnName="stock1_closing_share_price" />
+                <ScalarProperty Name="stock1_ending_investment_value" ColumnName="stock1_ending_investment_value" />
+                <ScalarProperty Name="stock2_date" ColumnName="stock2_date" />
+                <ScalarProperty Name="stock2_name" ColumnName="stock2_name" />
+                <ScalarProperty Name="stock2_tkr" ColumnName="stock2_tkr" />
+                <ScalarProperty Name="stock2_beg_investment_value" ColumnName="stock2_beg_investment_value" />
+                <ScalarProperty Name="stock2_beg_share_price" ColumnName="stock2_beg_share_price" />
+                <ScalarProperty Name="stock2_no_shares" ColumnName="stock2_no_shares" />
+                <ScalarProperty Name="stock2_closing_share_price" ColumnName="stock2_closing_share_price" />
+                <ScalarProperty Name="stock2_ending_investment_value" ColumnName="stock2_ending_investment_value" />
+                <ScalarProperty Name="stock3_date" ColumnName="stock3_date" />
+                <ScalarProperty Name="stock3_name" ColumnName="stock3_name" />
+                <ScalarProperty Name="stock3_tkr" ColumnName="stock3_tkr" />
+                <ScalarProperty Name="stock3_beg_investment_value" ColumnName="stock3_beg_investment_value" />
+                <ScalarProperty Name="stock3_beg_share_price" ColumnName="stock3_beg_share_price" />
+                <ScalarProperty Name="stock3_no_shares" ColumnName="stock3_no_shares" />
+                <ScalarProperty Name="stock3_closing_share_price" ColumnName="stock3_closing_share_price" />
+                <ScalarProperty Name="stock3_ending_investment_value" ColumnName="stock3_ending_investment_value" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
