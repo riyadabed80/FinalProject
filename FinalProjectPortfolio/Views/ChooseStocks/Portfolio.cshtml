@@ -8,7 +8,6 @@
 @*TO DO:
     #1. Add Link (below) to Layout CS - #2. Add Ation to Results Controller*@
 
-<a href="/Home/ChooseStocks/Portfoilo">Add Portfolio</a>
 
 <table class="table">
     <tr>
@@ -32,6 +31,9 @@
         </th>
         <th>
             Closing Vlaue
+        </th> 
+        <th>
+            $ Amount Gain (Loss)
         </th>
         <th>
             Gain/Loss %
@@ -39,7 +41,7 @@
 
     </tr>
 
-    @*@foreach (var portfolio in ViewBag.Portfolio.List)
+    @foreach (var portfolio in ViewBag.StockTable)
      {
         <tr>
 
@@ -50,6 +52,8 @@
             <td>@portfolio.stock1_no_shares</td>
             <td>@portfolio.stock1_closing_share_price</td>
             <td>@portfolio.stock1_ending_investment_value</td>
+            <td>@portfolio.profitloss1</td>
+            <td>@portfolio.percentage1</td>
         </tr>
         <tr>
             <td>@portfolio.stock2_name</td>
@@ -59,6 +63,8 @@
             <td>@portfolio.stock2_no_shares</td>
             <td>@portfolio.stock2_closing_share_price</td>
             <td>@portfolio.stock2_ending_investment_value</td>
+            <td>@portfolio.profitloss2</td>
+            <td>@portfolio.percentage2</td>
         </tr>
         <tr>
             <td>@portfolio.stock3_name</td>
@@ -68,7 +74,10 @@
             <td>@portfolio.stock3_no_shares</td>
             <td>@portfolio.stock3_closing_share_price</td>
             <td>@portfolio.stock3_ending_investment_value</td>
+            <td>@portfolio.profitloss3</td>
+            <td>@portfolio.percentage3</td>
         </tr>
-     }*@
+
+     }
 </table>
 

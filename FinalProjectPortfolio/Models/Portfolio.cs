@@ -40,6 +40,12 @@ namespace FinalProjectPortfolio.Models
         public decimal stock3_closing_share_price { get; set; }
         public decimal stock3_ending_investment_value { get; set; }
         public string userID { get; set; }
+        public decimal profitloss1 { get; set; }
+        public decimal percentage1 { get; set; }
+        public decimal profitloss2 { get; set; }
+        public decimal percentage2 { get; set; }
+        public decimal profitloss3 { get; set; }
+        public decimal percentage3 { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
     }
