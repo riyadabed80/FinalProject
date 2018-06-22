@@ -1,4 +1,8 @@
+<<<<<<< HEAD:FinalProjectPortfolio/Models/portfolio.Designer.cs
 ﻿// T4 code generation is enabled for model 'C:\Users\rayab\source\repos\FinalProjectPortfolio\FinalProjectPortfolio\Models\portfolio.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'C:\Users\nelto\source\repos\FinalProject\FinalProjectPortfolio\Models\portfolioDB.edmx'. 
+>>>>>>> new home page:FinalProjectPortfolio/Models/portfolioDB.Designer.cs
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

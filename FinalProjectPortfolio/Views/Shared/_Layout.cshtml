@@ -12,23 +12,26 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("WhateverName", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a href="https://fontmeme.com/star-wars-font/"><img src="https://fontmeme.com/permalink/180622/89aa994931c4045924dea98787a4eaf4.png" class="wars" alt="star-wars-font" border="0"></a>
+                @*@Html.ActionLink("StockWars", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
+            @*<img src="~/Content/Images/yoda-edit.png" height="20" width="20" alt="picture of Yoda" />*@
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">               
-                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                        @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
-                        @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                        
-                        <li><a href="/ChooseStocks/StockSelector">Invest Now</a></li>
-                        @*<li><a href="/ChooseStocks/StockPrice">StockPrice</a></li>
-            <li><a href="/ChooseStocks/NowPrice">NowPrice</a></li>*@
-                        <li><a href="/ChooseStocks/Portfolio">Your Portfolio</a></li>
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
+                    <li><a href="/ChooseStocks/StockSelector">Invest Now</a></li>
+                    @*<li><a href="/ChooseStocks/StockPrice">StockPrice</a></li>
+                <li><a href="/ChooseStocks/NowPrice">NowPrice</a></li>*@
+                    <li><a href="/ChooseStocks/Portfolio">Your Portfolio</a></li>
 
 
                 </ul>
@@ -40,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Grand Circus C#.Net Bootcamp</p>
         </footer>
     </div>
 

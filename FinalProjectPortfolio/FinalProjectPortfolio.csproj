@@ -231,6 +231,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Dueling_lightsabers.png" />
     <Content Include="Content\Images\Money.jpg" />
+    <Content Include="Content\Images\phone.png" />
     <Content Include="Content\Images\Ticker.jpg" />
     <Content Include="Content\Images\yoda-edit.png" />
     <Content Include="favicon.ico" />
