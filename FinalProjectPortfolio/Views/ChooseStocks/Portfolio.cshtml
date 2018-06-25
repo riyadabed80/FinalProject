@@ -58,48 +58,51 @@
         <td>@portfolio.portfolioID</td>
         <td>@portfolio.stock1_name</td>
         <td>@portfolio.stock1_tkr</td>
-        <td>@portfolio.stock1_beg_investment_value</td>
-        <td>@portfolio.stock1_beg_share_price</td>
+        <td>$@Math.Round(portfolio.stock1_beg_investment_value,2)</td>
+        <td>$@Math.Round(portfolio.stock1_beg_share_price,2)</td>
         <td>@portfolio.stock1_no_shares</td>
-        <td>@portfolio.stock1_closing_share_price</td>
-        <td>@portfolio.stock1_ending_investment_value</td>
-        <td>@portfolio.profitloss1</td>
+        <td>$@Math.Round(portfolio.stock1_closing_share_price,2)</td>
+        <td>$@Math.Round(portfolio.stock1_ending_investment_value,2)</td>
+        <td>$@Math.Round(portfolio.profitloss1,2)</td>
         <td>@portfolio.percentage1</td>
     </tr>
         <tr>
             <td></td>
+            <td></td>
             <td>@portfolio.stock2_name</td>
             <td>@portfolio.stock2_tkr</td>
-            <td>@portfolio.stock2_beg_investment_value</td>
-            <td>@portfolio.stock2_beg_share_price</td>
+            <td>$@Math.Round(portfolio.stock2_beg_investment_value,2)</td>
+            <td>$@Math.Round(portfolio.stock2_beg_share_price,2)</td>
             <td>@portfolio.stock2_no_shares</td>
-            <td>@portfolio.stock2_closing_share_price</td>
-            <td>@portfolio.stock2_ending_investment_value</td>
-            <td>@portfolio.profitloss2</td>
+            <td>$@Math.Round(portfolio.stock2_closing_share_price,2)</td>
+            <td>$@Math.Round(portfolio.stock2_ending_investment_value,2)</td>
+            <td>$@Math.Round(portfolio.profitloss2,2)</td>
             <td>@portfolio.percentage2</td>
         </tr>
         <tr>
             <td></td>
+            <td></td>
             <td>@portfolio.stock3_name</td>
             <td>@portfolio.stock3_tkr</td>
-            <td>@portfolio.stock3_beg_investment_value</td>
-            <td>@portfolio.stock3_beg_share_price</td>
+            <td>$@Math.Round(portfolio.stock3_beg_investment_value,2)</td>
+            <td>$@Math.Round(portfolio.stock3_beg_share_price,2)</td>
             <td>@portfolio.stock3_no_shares</td>
-            <td>@portfolio.stock3_closing_share_price</td>
-            <td>@portfolio.stock3_ending_investment_value</td>
-            <td>@portfolio.profitloss3</td>
+            <td>$@Math.Round(portfolio.stock3_closing_share_price,2)</td>
+            <td>$@Math.Round(portfolio.stock3_ending_investment_value,2)</td>
+            <td>$@Math.Round(portfolio.profitloss3,2)</td>
             <td>@portfolio.percentage3</td>
         </tr>
         <tr class="bold">
             <td></td>
             <td></td>
             <td></td>
-            <td>@portfolio.totalbegining</td>
+            <td></td>
+            <td>$@Math.Round(portfolio.totalbegining,2)</td>
             <td></td>
             <td></td>
             <td></td>
-            <td>@portfolio.totalending</td>
-            <td>@portfolio.totalprofiit</td>
+            <td>$@Math.Round(portfolio.totalending,2)</td>
+            <td>$@Math.Round(portfolio.totalprofiit,2)</td>
             <td>@portfolio.totalpercentage</td>
         </tr>
 
