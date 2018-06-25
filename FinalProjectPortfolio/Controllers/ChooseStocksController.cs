@@ -204,7 +204,7 @@ namespace FinalProjectPortfolio.Controllers
         public static decimal Percentage(decimal endingInvestmentValue, decimal begInvestmentValue)
         {
             //gives the percentage increase
-            decimal percentIncrease = endingInvestmentValue / begInvestmentValue;
+            decimal percentIncrease = endingInvestmentValue/begInvestmentValue;
             return percentIncrease;
         }
 
