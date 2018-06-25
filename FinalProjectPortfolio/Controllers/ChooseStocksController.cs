@@ -171,7 +171,7 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (1min)"]["2018-06-22 15:00:00"]["4. close"].ToString());
+            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (1min)"]["2018-06-25 11:00:00"]["4. close"].ToString());
 
             //ViewBag.UserPrice = userPrice;
             //ViewBag.TodayPrice = todayPrice;
