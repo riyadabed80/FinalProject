@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Leaderboard";
+}
+
+<br /><br /><br /><br />
+
+<h2 align="center" style="color:black;"><i>Stock Wars Leaderboard.</i></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            User Name
+        </th>
+        <th>
+            How Much Invested   @*Total Begining Value*@
+        </th>
+        <th>
+            Closing Vlaue         @*Total Ending Value*@
+        </th>
+        <th>
+            Total Profit            
+        </th>
+        <th>
+            % Gain
+        </th>
+
+
+    </tr>
+
+    @foreach (var portfolio in ViewBag.StockTable)
+    {
+        <tr class="bold">
+            
+            <td>@portfolio.UserName</td>
+            <td>$@Math.Round(portfolio.UserPortfolio.totalbegining,2)</td>
+            <td>$@Math.Round(portfolio.UserPortfolio.totalending,2)</td>
+            <td>$@Math.Round(portfolio.UserPortfolio.totalprofiit,2)</td>
+            <td>@Math.Round(portfolio.UserPortfolio.totalpercentage,2)%</td>
+        </tr>
+
+   
+
+    }
+</table>
+
