@@ -234,6 +234,24 @@ namespace FinalProjectPortfolio.Controllers
             return View();
         }
 
+        public ActionResult DeletePortfolio(int portfolioID)
+        {
+            portfolioEntities ORM = new portfolioEntities();
+            Portfolio founded = ORM.Portfolios.Find(portfolioID);
+
+            //if (founded != null)
+            //{
+                ORM.Portfolios.Remove(founded);
+                ORM.SaveChanges();
+                return RedirectToAction("Portfolio");
+            //}
+            //else
+            //{
+            //    return View("Error");
+            //}
+        }
+
+
 
     }
 }

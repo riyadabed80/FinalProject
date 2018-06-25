@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            Delete Portifolio
+        </th>
+        <th>
             Portfolio ID
         </th>
         <th>
@@ -46,18 +49,23 @@
 
     @foreach (var portfolio in ViewBag.StockTable)
      {
-        <tr>
-            <td>@portfolio.portfolioID</td>
-            <td>@portfolio.stock1_name</td>
-            <td>@portfolio.stock1_tkr</td>
-            <td>@portfolio.stock1_beg_investment_value</td>
-            <td>@portfolio.stock1_beg_share_price</td>
-            <td>@portfolio.stock1_no_shares</td>
-            <td>@portfolio.stock1_closing_share_price</td>
-            <td>@portfolio.stock1_ending_investment_value</td>
-            <td>@portfolio.profitloss1</td>
-            <td>@portfolio.percentage1</td>
-        </tr>
+    <tr>
+        <td>
+            <a href="../ChooseStocks/DeletePortfolio?portfolioID=@portfolio.portfolioID" onclick="return confirm('are you sure')">
+                <span class=" glyphicon glyphicon-trash"></span>Delete
+            </a>
+        </td>
+        <td>@portfolio.portfolioID</td>
+        <td>@portfolio.stock1_name</td>
+        <td>@portfolio.stock1_tkr</td>
+        <td>@portfolio.stock1_beg_investment_value</td>
+        <td>@portfolio.stock1_beg_share_price</td>
+        <td>@portfolio.stock1_no_shares</td>
+        <td>@portfolio.stock1_closing_share_price</td>
+        <td>@portfolio.stock1_ending_investment_value</td>
+        <td>@portfolio.profitloss1</td>
+        <td>@portfolio.percentage1</td>
+    </tr>
         <tr>
             <td></td>
             <td>@portfolio.stock2_name</td>
