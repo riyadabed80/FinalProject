@@ -23,33 +23,25 @@ textarea {
     max-width: 280px;
 }
 
-.pic
-{
+.pic {
     display: inline;
     margin-left: 720px;
     /*margin-right: auto;*/
     margin-top: -450px;
-    
-    
 }
 
-.btn-success
-{
+.btn-success {
     margin-left: 40px;
 }
 
-.list-rules 
-{
-   color: black;
-   font-weight: bold;
-   font-family:sans-serif;
-   font-size: 1.5em;
-   
-   
+.list-rules {
+    color: black;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+    font-size: 1.5em;
 }
 
-.words
-{
+.words {
     display: inline-block;
     margin-top: 220px;
     margin-left: 50px;
@@ -58,50 +50,46 @@ textarea {
 
 
 
-ul{
+ul {
     list-style-type: none;
 }
 
-.twenty
-{
+.twenty {
     font-size: 15px;
     font-style: italic;
     font-weight: normal;
 }
 
-.money
-{
+.money {
     font-weight: 900;
     font-size: 40px;
 }
 
-.wars
-{
+.wars {
     margin-top: 27px;
 }
 
-.yoda
-{
+.yoda {
     position: absolute;
     margin-top: -420px;
-    opacity:0.7;
+    opacity: 0.7;
     margin-left: 320px;
     border: 20px solid transparent;
     border-radius: 190px 190px;
-    box-shadow:50px 50px inset;
+    box-shadow: 50px 50px inset;
 }
 
-p 
-{
+p {
     margin-left: 40px;
     font-family: Arial;
     font-weight: bold;
     font-size: 18px;
-
 }
 .bold
 {
     font-weight:900
 }
+
+
 
 
