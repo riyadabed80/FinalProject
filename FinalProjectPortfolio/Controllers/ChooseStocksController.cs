@@ -222,6 +222,7 @@ namespace FinalProjectPortfolio.Controllers
             decimal profit = endingInvestmentValue - begInvestmentValue;
             return profit;
         }
+
         [Authorize]
         public ActionResult StockSelector()
         {
@@ -258,6 +259,47 @@ namespace FinalProjectPortfolio.Controllers
             //    return View("Error");
             //}
         }
+
+        public ActionResult UpdatePortfolioForm(int userChoice)
+        {
+            portfolioEntities ORM = new portfolioEntities();
+            Portfolio portfolio = ORM.Portfolios.Find(userChoice);
+            return View("UpdatePortfolio", portfolio);
+        }
+
+        public ActionResult UpdatePortfolio(Portfolio userChoice)
+        {
+            portfolioEntities ORM = new portfolioEntities();
+            Portfolio OldFounded = ORM.Portfolios.Find(userChoice.portfolioID);
+            OldFounded.stock1_name = userChoice.stock1_name;
+            OldFounded.stock1_tkr = userChoice.stock1_tkr;
+            OldFounded.stock1_beg_investment_value = userChoice.stock1_beg_investment_value;
+            OldFounded.stock1_date = userChoice.stock1_date;
+
+            OldFounded.stock2_name = userChoice.stock2_name;
+            OldFounded.stock2_tkr = userChoice.stock2_tkr;
+            OldFounded.stock2_beg_investment_value = userChoice.stock2_beg_investment_value;
+            OldFounded.stock2_date = userChoice.stock2_date;
+
+            OldFounded.stock3_name = userChoice.stock3_name;
+            OldFounded.stock3_tkr = userChoice.stock3_tkr;
+            OldFounded.stock3_beg_investment_value = userChoice.stock3_beg_investment_value;
+            OldFounded.stock3_date = userChoice.stock3_date;
+
+            //if (OldFounded != null && ModelState.IsValid)
+            //{
+            ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
+            ORM.SaveChanges();
+            return RedirectToAction("Portfolio");
+            //}
+            //else
+            //{
+            //    ViewBag.ErrorMessage = "Oops! Something Went Wrong";
+            //    return View("Error");
+            //}
+
+        }
+
 
 
 
