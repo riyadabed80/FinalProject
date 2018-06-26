@@ -152,7 +152,7 @@ namespace FinalProjectPortfolio.Controllers
         public static decimal TodaySharePrice(string symbol)
         {
             string apiKey = ConfigurationManager.AppSettings.Get("apikey");
-            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=30min&outputsize=full&apikey={apiKey}");
+            HttpWebRequest request = WebRequest.CreateHttp($"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=1min&outputsize=full&apikey={apiKey}");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
             //hiding api key
 
@@ -171,7 +171,15 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (30min)"]["2018-06-25 12:00:00"]["4. close"].ToString());
+            DateTime closing = DateTime.Now.AddHours(-1).AddSeconds(-1* DateTime.Now.Second);
+            string close = closing.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+           // "2018-06-25 16:00:00"
+
+
+
+            decimal closingSharePrice = Decimal.Parse(JsonData["Time Series (1min)"][close]["4. close"].ToString());
 
             //ViewBag.UserPrice = userPrice;
             //ViewBag.TodayPrice = todayPrice;
