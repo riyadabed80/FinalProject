@@ -8,77 +8,78 @@
 
 @*<a href="/Home/ChooseStocks/StockSelector">Add a New Portfolio</a>*@
 
-<script>
-$(function() {
- $( "#datepicker" ).datepicker({
- beforeShowDay: $.datepicker.noWeekends
- });
- });
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Datepicker - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 
 <br />
 <br />
 <h2 align="center">Welcome to the Grand Circus Stock Selector</h2>
 <hr />
 <form action="../ChooseStocks/SaveSymbol" method="post">
+
+
+    
     <div class="form-group">
         <label>Stock #1 Name</label>
-        <input type="text" name="stock1_name" class="form-control"/>
+        <input type="text" name="stock1_name" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Stock #1 Ticker</label>
-        <input type="text" name="stock1_tkr" class="form-control"/>
+        <input type="text" name="stock1_tkr" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Date</label>
-        <input type="date" min="1998-06-19" max="2018-06-19" name="stock1_date" class="form-control" id="datepicker"/>
+        <input type="text" min="1998-06-19" max="2018-06-19" name="stock1_date" class="form-control" id="datepicker1" />
     </div>
 
     <div class="form-group">
         <label>How Much to Invest in Stock #1?</label>
-        <input type="text" name="stock1_beg_investment_value" class="form-control"/>
+        <input type="text" name="stock1_beg_investment_value" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Stock #2 Name</label>
-        <input type="text" name="stock2_name" class="form-control"/>
+        <input type="text" name="stock2_name" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Stock #2 Ticker</label>
-        <input type="text" name="stock2_tkr" class="form-control"/>
+        <input type="text" name="stock2_tkr" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Date</label>
-        <input type="date" min="1998-06-19" max="2018-06-19" name="stock2_date" class="form-control"/>
+        <input type="text" min="1998-06-19" max="2018-06-19" name="stock2_date" class="form-control" id="datepicker2" />
     </div>
 
     <div class="form-group">
         <label>How Much to Invest in Stock #2?</label>
-        <input type="text" name="stock2_beg_investment_value" class="form-control"/>
+        <input type="text" name="stock2_beg_investment_value" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Stock #3 Name</label>
-        <input type="text" name="stock3_name" class="form-control"/>
+        <input type="text" name="stock3_name" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Stock #3 Ticker</label>
-        <input type="text" name="stock3_tkr" class="form-control"/>
+        <input type="text" name="stock3_tkr" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Date</label>
-        <input type="date" min="1998-06-19" max="2018-06-19" name="stock3_date" class="form-control"/>
+        <input type="text" min="1998-06-19" max="2018-06-19" name="stock3_date" class="form-control" id="datepicker3" />
     </div>
 
     <div class="form-group">
         <label>How Much to Invest in Stock #3?</label>
-        <input type="text" name="stock3_beg_investment_value" class="form-control"/>
+        <input type="text" name="stock3_beg_investment_value" class="form-control" />
     </div>
 
     <div class="form-group">
@@ -87,12 +88,8 @@ $(function() {
     </div>
 
 </form>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-@*<form action="../ChooseStocks/SaveSymbol" method="post">
-    <div class="form-group">
-        <label>Symbol</label>
-        <input type="text" name="stock1_tkr" class="form-control" />
-        <input type="submit" value="check" class="form-control" />
-    </div>
-</form>*@
+<script src="~/Scripts/JavaScript.js"></script>
 
