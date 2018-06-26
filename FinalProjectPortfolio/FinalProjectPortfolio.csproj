@@ -255,6 +255,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Views\ChooseStocks\Portfolio.cshtml" />
     <Content Include="Views\ChooseStocks\SaveSymbol.cshtml" />
     <EntityDeploy Include="Models\portfolio.edmx">

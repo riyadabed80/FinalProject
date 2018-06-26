@@ -22,9 +22,15 @@ namespace FinalProjectPortfolio.Controllers
 
 
             port.userID = User.Identity.GetUserId();
-            port.stock1_beg_share_price = HistoricalSharePrice(port.stock1_tkr, port.stock1_date);
-            port.stock2_beg_share_price = HistoricalSharePrice(port.stock2_tkr, port.stock2_date);
-            port.stock3_beg_share_price = HistoricalSharePrice(port.stock3_tkr, port.stock3_date);
+            DateTime flip1 = DateTime.Parse(port.stock1_date);
+            DateTime flip2 = DateTime.Parse(port.stock2_date);
+            DateTime flip3 = DateTime.Parse(port.stock3_date);
+            string flipped1 = flip1.ToString("yyyy-MM-dd");
+            string flipped2 = flip2.ToString("yyyy-MM-dd");
+            string flipped3 = flip3.ToString("yyyy-MM-dd");
+            port.stock1_beg_share_price = HistoricalSharePrice(port.stock1_tkr, flipped1);
+            port.stock2_beg_share_price = HistoricalSharePrice(port.stock2_tkr, flipped2);
+            port.stock3_beg_share_price = HistoricalSharePrice(port.stock3_tkr, flipped3);
             port.stock1_closing_share_price = TodaySharePrice(port.stock1_tkr);
             port.stock2_closing_share_price = TodaySharePrice(port.stock2_tkr);
             port.stock3_closing_share_price = TodaySharePrice(port.stock3_tkr);
@@ -252,7 +258,7 @@ namespace FinalProjectPortfolio.Controllers
             //{
                 ORM.Portfolios.Remove(founded);
                 ORM.SaveChanges();
-                return RedirectToAction("Portfolio");
+                return RedirectToAction("Portfolio"); 
             //}
             //else
             //{
