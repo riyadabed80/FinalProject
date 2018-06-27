@@ -177,7 +177,7 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            DateTime closing = DateTime.Now.AddHours(-1).AddSeconds(-1* DateTime.Now.Second);
+            DateTime closing = DateTime.Now.AddHours(0).AddSeconds(-1* DateTime.Now.Second);
             string close = closing.ToString("yyyy-MM-dd HH:mm:ss");
 
 
