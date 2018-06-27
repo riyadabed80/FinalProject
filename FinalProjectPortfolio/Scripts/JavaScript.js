@@ -30,5 +30,13 @@ $(function () {
     });
 });
 
-
-
+function total() {
+    if ("#stock1" + "#stock2" + "#stock3" == 5000)
+    {
+        continue;
+    }
+    else
+    {
+        alert('Please make sure The Total is $5000');
+    }
+}

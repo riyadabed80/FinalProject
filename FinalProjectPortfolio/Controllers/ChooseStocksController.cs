@@ -266,32 +266,41 @@ namespace FinalProjectPortfolio.Controllers
             //}
         }
 
-        public ActionResult UpdatePortfolioForm(int userChoice)
+        public ActionResult UpdatePortfolioForm(int userChoice, int num)
         {
             portfolioEntities ORM = new portfolioEntities();
             Portfolio portfolio = ORM.Portfolios.Find(userChoice);
+            ViewBag.Num = num;
             return View("UpdatePortfolio", portfolio);
         }
 
-        public ActionResult UpdatePortfolio(Portfolio userChoice)
+        public ActionResult UpdatePortfolio(int portfolioID, int num, string stockName, string stockTkr, string stockDate, decimal amountInvested)
         {
             portfolioEntities ORM = new portfolioEntities();
-            Portfolio OldFounded = ORM.Portfolios.Find(userChoice.portfolioID);
-            OldFounded.stock1_name = userChoice.stock1_name;
-            OldFounded.stock1_tkr = userChoice.stock1_tkr;
-            OldFounded.stock1_beg_investment_value = userChoice.stock1_beg_investment_value;
-            OldFounded.stock1_date = userChoice.stock1_date;
+            Portfolio OldFounded = ORM.Portfolios.Find(portfolioID);
 
-            OldFounded.stock2_name = userChoice.stock2_name;
-            OldFounded.stock2_tkr = userChoice.stock2_tkr;
-            OldFounded.stock2_beg_investment_value = userChoice.stock2_beg_investment_value;
-            OldFounded.stock2_date = userChoice.stock2_date;
-
-            OldFounded.stock3_name = userChoice.stock3_name;
-            OldFounded.stock3_tkr = userChoice.stock3_tkr;
-            OldFounded.stock3_beg_investment_value = userChoice.stock3_beg_investment_value;
-            OldFounded.stock3_date = userChoice.stock3_date;
-
+            if (num == 1)
+            {
+                OldFounded.stock1_name = stockName;
+                OldFounded.stock1_tkr = stockTkr;
+                OldFounded.stock1_date = stockDate;
+                OldFounded.stock1_beg_investment_value = amountInvested;
+            }
+            else if(num == 2)
+            {
+                OldFounded.stock2_name = stockName;
+                OldFounded.stock2_tkr = stockTkr;
+                OldFounded.stock2_date = stockDate;
+                OldFounded.stock2_beg_investment_value = amountInvested;
+            }
+            else
+            {
+                OldFounded.stock3_name = stockName;
+                OldFounded.stock3_tkr = stockTkr;
+                OldFounded.stock3_date = stockDate;
+                OldFounded.stock3_beg_investment_value = amountInvested;
+            }
+            
             //if (OldFounded != null && ModelState.IsValid)
             //{
             ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
