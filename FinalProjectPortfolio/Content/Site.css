@@ -25,9 +25,10 @@ textarea {
 
 .pic {
     display: inline;
-    margin-left: 720px;
+    margin-left: 680px;
     /*margin-right: auto;*/
-    margin-top: -450px;
+    margin-top: -440px;
+
 }
 
 .btn-success {
@@ -37,14 +38,15 @@ textarea {
 .list-rules {
     color: black;
     font-weight: bold;
-    font-family: 'Times New Roman';
+    font-family:sans-serif;
     font-size: 1.5em;
+    
 }
 
 .words {
     display: inline-block;
-    margin-top: 220px;
-    margin-left: 50px;
+    margin-top: 185px;
+    margin-left: 90px;
     font-size: 18px;
 }
 
@@ -69,15 +71,6 @@ ul {
     margin-top: 27px;
 }
 
-.yoda {
-    position: absolute;
-    margin-top: -420px;
-    opacity: 0.7;
-    margin-left: 320px;
-    border: 20px solid transparent;
-    border-radius: 190px 190px;
-    box-shadow: 50px 50px inset;
-}
 
 p {
     margin-left: 40px;
@@ -90,7 +83,15 @@ p {
     font-weight:900
 }
 
+.yoda
+{
+    margin-right: -300px;
+    position: absolute;
+}
 
-
+#btn
+{
+    margin-left: 953px;
+}
 
 
