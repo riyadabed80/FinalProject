@@ -37,9 +37,8 @@ namespace FinalProjectPortfolio.Controllers
             port.stock1_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock1_beg_share_price);
             port.stock2_no_shares = NumberOfShares(port.stock2_beg_investment_value, port.stock2_beg_share_price);
             port.stock3_no_shares = NumberOfShares(port.stock3_beg_investment_value, port.stock3_beg_share_price);
-            port.stock1_ending_investment_value = port.stock1_no_shares * port.stock1_closing_share_price;
-            port.stock2_ending_investment_value = port.stock2_no_shares * port.stock2_closing_share_price;
-            port.stock3_ending_investment_value = port.stock3_no_shares * port.stock3_closing_share_price;
+      
+
             port.profitloss1 = TotalAmountGained(port.stock1_ending_investment_value, port.stock1_beg_investment_value);
             port.profitloss2 = TotalAmountGained(port.stock2_ending_investment_value, port.stock2_beg_investment_value);
             port.profitloss3 = TotalAmountGained(port.stock3_ending_investment_value, port.stock3_beg_investment_value);
@@ -51,17 +50,31 @@ namespace FinalProjectPortfolio.Controllers
             port.totalprofiit= port.profitloss1 + port.profitloss2 + port.profitloss3;
             port.totalpercentage = ((port.totalending-port.totalbegining)/5000)*100;
 
-            ORM.Portfolios.Add(port);
 
-            //string email = User.Identity.GetUserName();
-            //ORM.AspNetUsers.Where(u => u.Email ==email ).ToArray()[0].Portfolios.ToList().Add(port);
+            port.stock1_ending_investment_value = port.stock1_no_shares * port.stock1_closing_share_price;
+            port.stock2_ending_investment_value = port.stock2_no_shares * port.stock2_closing_share_price;
+            port.stock3_ending_investment_value = port.stock3_no_shares * port.stock3_closing_share_price;
 
-            
+            if (port.stock1_ending_investment_value + port.stock2_ending_investment_value + port.stock3_ending_investment_value <= 5000)
+            {
+                ORM.Portfolios.Add(port);
 
-           // ORM.Portfolio_Table.Add(port);
-            ORM.SaveChanges();
-           // ViewBag.StockTable = ORM.AspNetUsers.Find(User.Identity.GetUserId()).Portfolios;
-            return RedirectToAction("Portfolio");
+                //string email = User.Identity.GetUserName();
+                //ORM.AspNetUsers.Where(u => u.Email ==email ).ToArray()[0].Portfolios.ToList().Add(port);
+
+
+
+                // ORM.Portfolio_Table.Add(port);
+                ORM.SaveChanges();
+                // ViewBag.StockTable = ORM.AspNetUsers.Find(User.Identity.GetUserId()).Portfolios;
+                return RedirectToAction("Portfolio");
+            }
+            else
+            {
+                ViewBag.Message =$"{port.stock1_beg_investment_value + port.stock1_beg_investment_value + port.stock1_beg_investment_value}";
+                return View("SaveSymbol");
+            }
+     
         }
 
         // GET: ChooseStocks
@@ -273,7 +286,7 @@ namespace FinalProjectPortfolio.Controllers
             ViewBag.Num = num;
             return View("UpdatePortfolio", portfolio);
         }
-
+        
         public ActionResult UpdatePortfolio(int portfolioID, int num, string stockName, string stockTkr, string stockDate, decimal amountInvested)
         {
             portfolioEntities ORM = new portfolioEntities();
