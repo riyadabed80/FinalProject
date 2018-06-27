@@ -5,6 +5,11 @@
 
 @model FinalProjectPortfolio.Models.Portfolio
 <hr />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Datepicker - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 
 <h2>EDIT</h2>
 
@@ -20,17 +25,17 @@
 
         <div class="form-group">
             <label>Stock Ticker</label>
-            <input type="text" name="stockTkr" value="stock1_tkr" class="form-control" />
+            <input type="text" name="stockTkr" class="form-control" required placeholder=" ex. MSFT" />
         </div>
 
         <div class="form-group">
             <label>Date</label>
-            <input type="date" min="1998-06-19" max="2018-06-19" name="stockDate" value="stock1_date" class="form-control" id="datepicker" />
+            <input type="text" name="stockDate" class="form-control" id="datepicker1" required />
         </div>
 
         <div class="form-group">
-            <label>How Much to Invest in Stock #1?</label>
-            <input type="text" name="amountInvested" value="stock1_beg_investment_value" class="form-control" />
+            <label>How Much to Invest in Stock #1</label>
+            <input type="text" name="amountInvested" min="500" max="2000" class="form-control" required placeholder="Enter amount between 500 and 2000"/>
         </div>
         <div class="form-group">
             <label>Update your portfolio!</label>
@@ -52,17 +57,17 @@
 
         <div class="form-group">
             <label>Stock Ticker</label>
-            <input type="text" name="stockTkr" value="stock2_tkr" class="form-control" />
+            <input type="text" name="stockTkr" class="form-control"  />
         </div>
 
         <div class="form-group">
             <label>Date</label>
-            <input type="date" min="1998-06-19" max="2018-06-19" name="stockDate" value="stock1_date" class="form-control" id="datepicker" />
+            <input type="text" name="stockDate" class="form-control" id="datepicker2" required />
         </div>
 
         <div class="form-group">
-            <label>How Much to Invest in Stock #1?</label>
-            <input type="text" name="amountInvested" value="stock2_beg_investment_value" class="form-control" />
+            <label>How Much to Invest in Stock #2?</label>
+            <input type="text" name="amountInvested" min="500" max="2000" value="enter amount between 500 and 2000" class="form-control" required placeholder="Enter amount between 500 and 2000" />
         </div>
         <div class="form-group">
             <label>Update your portfolio!</label>
@@ -84,17 +89,17 @@
 
         <div class="form-group">
             <label>Stock Ticker</label>
-            <input type="text" name="stockTkr" value="stock3_tkr" class="form-control" />
+            <input type="text" name="stockTkr" value="ex. NFLX" class="form-control" />
         </div>
 
         <div class="form-group">
             <label>Date</label>
-            <input type="date" min="1998-06-19" max="2018-06-19" name="stockDate" value="stock3_date" class="form-control" id="datepicker" />
+            <input type="text" name="stockDate" class="form-control" id="datepicker3" required />
         </div>
 
         <div class="form-group">
-            <label>How Much to Invest in Stock #1?</label>
-            <input type="text" name="amountInvested" value="stock3_beg_investment_value" class="form-control" />
+            <label>How Much to Invest in Stock #3?</label>
+            <input type="text" name="amountInvested" min="500" max="2000" value="enter amount between 500 and 2000" class="form-control" required placeholder="Enter amount between 500 and 2000"/>
         </div>
         <div class="form-group">
             <label>Update your portfolio!</label>
@@ -102,4 +107,9 @@
         </div>
     </form>
 }
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="~/Scripts/JavaScript.js"></script>
+
 

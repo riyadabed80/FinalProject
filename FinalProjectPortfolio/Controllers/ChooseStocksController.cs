@@ -190,7 +190,7 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            DateTime closing = DateTime.Now.AddHours(0).AddSeconds(-1* DateTime.Now.Second);
+            DateTime closing = DateTime.Now.AddHours(-1).AddSeconds(-1* DateTime.Now.Second);
             string close = closing.ToString("yyyy-MM-dd HH:mm:ss");
 
 
@@ -286,34 +286,63 @@ namespace FinalProjectPortfolio.Controllers
             ViewBag.Num = num;
             return View("UpdatePortfolio", portfolio);
         }
-        
+
         public ActionResult UpdatePortfolio(int portfolioID, int num, string stockName, string stockTkr, string stockDate, decimal amountInvested)
         {
             portfolioEntities ORM = new portfolioEntities();
             Portfolio OldFounded = ORM.Portfolios.Find(portfolioID);
+            DateTime flip1 = DateTime.Parse(stockDate);
+            string flipped1 = flip1.ToString("yyyy-MM-dd");
+            decimal begPrice = HistoricalSharePrice(stockTkr, flipped1);
+            decimal todayPrice = TodaySharePrice(stockTkr);
+            int numOfShares = NumberOfShares(amountInvested, begPrice);
+            decimal endValue = numOfShares * todayPrice;
+            decimal profitloss = TotalAmountGained(endValue, amountInvested);
+            decimal percentage = Percentage(endValue, amountInvested);
+
 
             if (num == 1)
             {
                 OldFounded.stock1_name = stockName;
                 OldFounded.stock1_tkr = stockTkr;
                 OldFounded.stock1_date = stockDate;
+                OldFounded.stock1_beg_share_price = begPrice;
+                OldFounded.stock1_closing_share_price = todayPrice;
                 OldFounded.stock1_beg_investment_value = amountInvested;
+                OldFounded.stock1_no_shares = numOfShares;
+                OldFounded.stock1_ending_investment_value = endValue;
+                OldFounded.profitloss1 = profitloss;
+                OldFounded.percentage1 = percentage;
+
+
             }
-            else if(num == 2)
+            else if (num == 2)
             {
                 OldFounded.stock2_name = stockName;
                 OldFounded.stock2_tkr = stockTkr;
                 OldFounded.stock2_date = stockDate;
+                OldFounded.stock2_beg_share_price = begPrice;
+                OldFounded.stock2_closing_share_price = todayPrice;
                 OldFounded.stock2_beg_investment_value = amountInvested;
+                OldFounded.stock2_no_shares = numOfShares;
+                OldFounded.stock2_ending_investment_value = endValue;
+                OldFounded.profitloss2 = profitloss;
+                OldFounded.percentage2 = percentage;
             }
             else
             {
                 OldFounded.stock3_name = stockName;
                 OldFounded.stock3_tkr = stockTkr;
                 OldFounded.stock3_date = stockDate;
+                OldFounded.stock3_beg_share_price = begPrice;
+                OldFounded.stock3_closing_share_price = todayPrice;
                 OldFounded.stock3_beg_investment_value = amountInvested;
+                OldFounded.stock3_no_shares = numOfShares;
+                OldFounded.stock3_ending_investment_value = endValue;
+                OldFounded.profitloss3 = profitloss;
+                OldFounded.percentage3 = percentage;
             }
-            
+
             //if (OldFounded != null && ModelState.IsValid)
             //{
             ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
