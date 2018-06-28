@@ -182,7 +182,7 @@ namespace FinalProjectPortfolio.Controllers
             StreamReader data = new StreamReader(response.GetResponseStream());
             string stockprice = data.ReadToEnd();
             //string date = "2018-06-12";
-            //string now = DateTime.Today.ToString();
+            //string now = DateTime.Today.ToString();  
             //string time = "11:00:00";
 
             //ViewBag.RawData = data.ReadToEnd(); //read all the response data
