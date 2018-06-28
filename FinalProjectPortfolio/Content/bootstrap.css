@@ -4699,7 +4699,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
     .navbar-inverse .navbar-brand {
-        color: black;
+        background-color: #57c560;
         font-family: monospace;
         font-weight: 600;
     }
