@@ -313,6 +313,10 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.stock1_ending_investment_value = endValue;
                 OldFounded.profitloss1 = profitloss;
                 OldFounded.percentage1 = percentage;
+                OldFounded.totalbegining = amountInvested + OldFounded.stock2_beg_investment_value + OldFounded.stock3_beg_investment_value;
+                OldFounded.totalending = endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock3_ending_investment_value;
+                OldFounded.totalprofiit = profitloss + OldFounded.profitloss2 + OldFounded.profitloss3;
+                OldFounded.totalpercentage = percentage + OldFounded.percentage2 + OldFounded.percentage3;
 
 
             }
@@ -328,6 +332,10 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.stock2_ending_investment_value = endValue;
                 OldFounded.profitloss2 = profitloss;
                 OldFounded.percentage2 = percentage;
+                OldFounded.totalbegining = amountInvested + OldFounded.stock1_beg_investment_value + OldFounded.stock3_beg_investment_value;
+                OldFounded.totalending = endValue + OldFounded.stock1_ending_investment_value + OldFounded.stock3_ending_investment_value;
+                OldFounded.totalprofiit = profitloss + OldFounded.profitloss1 + OldFounded.profitloss3;
+                OldFounded.totalpercentage = percentage + OldFounded.percentage1 + OldFounded.percentage3;
             }
             else
             {
@@ -341,13 +349,36 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.stock3_ending_investment_value = endValue;
                 OldFounded.profitloss3 = profitloss;
                 OldFounded.percentage3 = percentage;
+                OldFounded.totalbegining = amountInvested + OldFounded.stock2_beg_investment_value + OldFounded.stock3_beg_investment_value;
+                OldFounded.totalending = endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock1_ending_investment_value;
+                OldFounded.totalprofiit = profitloss + OldFounded.profitloss2 + OldFounded.profitloss1;
+                OldFounded.totalpercentage = percentage + OldFounded.percentage2 + OldFounded.percentage1;
             }
 
-            //if (OldFounded != null && ModelState.IsValid)
+            ////if (OldFounded != null && ModelState.IsValid)
+            ////{
+            //if (percentage+OldFounded.percentage2+OldFounded.percentage1 != 5000 || percentage+OldFounded.percentage1+OldFounded.percentage3 != 5000|| percentage+OldFounded.percentage2+OldFounded.percentage3  != 5000)
             //{
-            ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
-            ORM.SaveChanges();
-            return RedirectToAction("Portfolio");
+            //    //ORM.Portfolios.Add();
+
+            //    //string email = User.Identity.GetUserName();
+            //    //ORM.AspNetUsers.Where(u => u.Email ==email ).ToArray()[0].Portfolios.ToList().Add(port);
+
+
+
+            //    // ORM.Portfolio_Table.Add(port);
+            //    ViewBag.Message = "Total amount invested must be equal to $5000";
+            //    return View("UpdatePortfolio");
+            //}
+            //else
+            //{
+                ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
+                ORM.SaveChanges();
+                return RedirectToAction("Portfolio");
+        
+            //}
+
+ 
             //}
             //else
             //{

@@ -13,6 +13,8 @@
 
 <h2>EDIT</h2>
 
+<h2>@ViewBag.Message</h2>
+
 @if (ViewBag.Num == 1)
 {
     <form action="../ChooseStocks/UpdatePortfolio" method="post">
@@ -35,7 +37,7 @@
 
         <div class="form-group">
             <label>How Much to Invest in Stock #1</label>
-            <input type="text" name="amountInvested" min="500" max="2000" class="form-control" required placeholder="Enter amount between 500 and 2000"/>
+            <input type="number" name="amountInvested" min="500" max="2000" class="form-control" required placeholder="Enter amount between 500 and 2000"/>
         </div>
         <div class="form-group">
             <label>Update your portfolio!</label>
@@ -67,7 +69,7 @@
 
         <div class="form-group">
             <label>How Much to Invest in Stock #2?</label>
-            <input type="text" name="amountInvested" min="500" max="2000" value="enter amount between 500 and 2000" class="form-control" required placeholder="Enter amount between 500 and 2000" />
+            <input type="number" name="amountInvested" min="500" max="2000" class="form-control" required placeholder="Enter amount between 500 and 2000" />
         </div>
         <div class="form-group">
             <label>Update your portfolio!</label>
@@ -99,7 +101,7 @@
 
         <div class="form-group">
             <label>How Much to Invest in Stock #3?</label>
-            <input type="text" name="amountInvested" min="500" max="2000" value="enter amount between 500 and 2000" class="form-control" required placeholder="Enter amount between 500 and 2000"/>
+            <input type="number" name="amountInvested" min="500" max="2000" class="form-control" required placeholder="Enter amount between 500 and 2000" />
         </div>
         <div class="form-group">
             <label>Update your portfolio!</label>
