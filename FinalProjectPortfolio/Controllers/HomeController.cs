@@ -49,5 +49,25 @@ namespace FinalProjectPortfolio.Controllers
             ViewBag.StockTable = leaders.OrderByDescending(x => x.UserPortfolio.totalprofiit).ToList();
             return View();
         }
+
+        public ActionResult StockSelector()
+        { return View(); }
+
+
+
+        public JsonResult SearchStockName(string name)
+        {
+            // ORM
+
+            portfolioEntities ORM = new portfolioEntities();
+
+            // search by name
+
+            List<StockTkr> Result = ORM.StockTkrs.Where(c => c.Name.Contains(name)).ToList();
+
+            // Return data as Jason!
+
+            return Json(Result);
+        }
     }
 }

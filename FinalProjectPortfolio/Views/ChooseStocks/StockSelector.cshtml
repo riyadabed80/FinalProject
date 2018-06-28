@@ -118,7 +118,7 @@ Name <input id="name" name="name" type="text" />
         $("#name").keyup(function () {
             $.ajax({
                 type: "POST",
-                url: "/Home/StockSelector",
+                url: "/Home/SearchStockName",
                 data: '{name:"' + $("#name").val() + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -128,12 +128,12 @@ Name <input id="name" name="name" type="text" />
                     for (var i = 0; i < response.length; i++) {
                         var StockTkr = response[i]; // get Customer at index
                         var Tr = "<tr>";
-                        //  var Td1 = "<td>" + StockTkr.Name + "</td>";
+                          //var Td1 = "<td>" + StockTkr.Name + "</td>";
                         var Td2 = "<td>" + StockTkr.Symbol + "</td>";
 
                         $("#searchResults").append(Tr + Td2 + "</tr>");
                     }
-                    // alert(response);
+                     //alert(response);
 
                 },
                 failure: function (response) {
