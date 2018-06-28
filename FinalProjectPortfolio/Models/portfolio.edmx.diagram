@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="portfolioModel.AspNetUser" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="portfolioModel.Portfolio" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="portfolioModel.FK_Portfolio_Table_AspNetUsers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="portfolioModel.StockTkr" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

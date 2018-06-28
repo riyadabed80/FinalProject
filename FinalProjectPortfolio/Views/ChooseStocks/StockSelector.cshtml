@@ -21,85 +21,126 @@
 <form action="../ChooseStocks/SaveSymbol" method="post">
 
 
-    
+
     <div class="form-row">
         <div class="form-group col-sm-3">
             <label>Stock #1 Name</label>
-            <input type="text" name="stock1_name" class="form-control" required placeholder="Enter Company Name"/>
+            <input type="text" name="stock1_name" class="form-control" required placeholder="Enter Company Name" />
         </div>
-        
-        
-            <div class="form-group col-sm-2">
-                <label>Stock #1 Ticker</label>
-                <input type="text" name="stock1_tkr" class="form-control" required placeholder="Ex. MSFT"/>
-            </div>
 
-            
-                <div class="form-group col-sm-3">
-                    <label>Date</label>
-                    <input type="text" name="stock1_date" class="form-control" id="datepicker1" required />
-                </div>
 
-                <div class="form-group col-sm-4">
-                    <label>How Much to Invest in Stock #1?</label>
-                    <input type="number" name="stock1_beg_investment_value" min="500" max="2000" class="form-control" id="stock1" required placeholder="Enter amount between 500 and 2000" />
-                </div>
-                </div>
-    
+        <div class="form-group col-sm-2">
+            <label>Stock #1 Ticker</label>
+            <input type="text" name="stock1_tkr" class="form-control" required placeholder="Ex. MSFT" />
+        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-sm-3">
-                        <label>Stock #2 Name</label>
-                        <input type="text" name="stock2_name" class="form-control" required placeholder="Enter Company Name" />
-                    </div>
 
-                    <div class="form-group col-sm-2">
-                        <label>Stock #2 Ticker</label>
-                        <input type="text" name="stock2_tkr" class="form-control" required placeholder="Ex. FB" />
-                    </div>
+        <div class="form-group col-sm-3">
+            <label>Date</label>
+            <input type="text" name="stock1_date" class="form-control" id="datepicker1" required />
+        </div>
 
-                    <div class="form-group col-sm-3">
-                        <label>Date</label>
-                        <input type="text" name="stock2_date" class="form-control" id="datepicker2" required/>
-                    </div>
+        <div class="form-group col-sm-4">
+            <label>How Much to Invest in Stock #1?</label>
+            <input type="number" name="stock1_beg_investment_value" min="500" max="2000" class="form-control" id="stock1" required placeholder="Enter amount between 500 and 2000" />
+        </div>
+    </div>
 
-                    <div class="form-group col-sm-4">
-                        <label>How Much to Invest in Stock #2?</label>
-                        <input type="number" name="stock2_beg_investment_value" min="500" max="2000" class="form-control" id="stock2" required placeholder="Enter amount between 500 and 2000" />
-                    </div>
-                    </div>
 
-                <div class="form-row">
-                    <div class="form-group col-sm-3">
-                        <label>Stock #3 Name</label>
-                        <input type="text" name="stock3_name" class="form-control" required placeholder="Enter Company Name" />
-                    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-3">
+            <label>Stock #2 Name</label>
+            <input type="text" name="stock2_name" class="form-control" required placeholder="Enter Company Name" />
+        </div>
 
-                    
-                        <div class="form-group col-sm-2">
-                            <label>Stock #3 Ticker</label>
-                            <input type="text" name="stock3_tkr" class="form-control" required placeholder="Ex. TSLA"/>
-                        </div>
+        <div class="form-group col-sm-2">
+            <label>Stock #2 Ticker</label>
+            <input type="text" name="stock2_tkr" class="form-control" required placeholder="Ex. FB" />
+        </div>
 
-                     
-                            <div class="form-group col-sm-3">
-                                <label>Date</label>
-                                <input type="text" name="stock3_date" class="form-control" id="datepicker3" required/>
-                            </div>
+        <div class="form-group col-sm-3">
+            <label>Date</label>
+            <input type="text" name="stock2_date" class="form-control" id="datepicker2" required />
+        </div>
 
-                            <div class="form-group col-sm-4">
-                                <label>How Much to Invest in Stock #3?</label>
-                                <input type="number" name="stock3_beg_investment_value" min="500" max="2000" class="form-control" id="stock3" required placeholder="Enter amount between 500 and 2000" />
-                            </div>
+        <div class="form-group col-sm-4">
+            <label>How Much to Invest in Stock #2?</label>
+            <input type="number" name="stock2_beg_investment_value" min="500" max="2000" class="form-control" id="stock2" required placeholder="Enter amount between 500 and 2000" />
+        </div>
+    </div>
 
-                            <div class="form-group">
-                                <input type="submit" value="Execute Buy" class="btn btn-success" id="btn"/>
-</div>
-                        </div>
+    <div class="form-row">
+        <div class="form-group col-sm-3">
+            <label>Stock #3 Name</label>
+            <input type="text" name="stock3_name" class="form-control" required placeholder="Enter Company Name" />
+        </div>
+
+
+        <div class="form-group col-sm-2">
+            <label>Stock #3 Ticker</label>
+            <input type="text" name="stock3_tkr" class="form-control" required placeholder="Ex. TSLA" />
+        </div>
+
+
+        <div class="form-group col-sm-3">
+            <label>Date</label>
+            <input type="text" name="stock3_date" class="form-control" id="datepicker3" required />
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label>How Much to Invest in Stock #3?</label>
+            <input type="number" name="stock3_beg_investment_value" min="500" max="2000" class="form-control" id="stock3" required placeholder="Enter amount between 500 and 2000" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Execute Buy" class="btn btn-success" id="btn" />
+        </div>
+    </div>
 
 </form>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="~/Scripts/JavaScript.js"></script>
+
+<h2>Search For Ticker Symbol</h2>
+
+Name <input id="name" name="name" type="text" />
+
+<input type="button" id="searchButton" value="Search" />
+
+<table id="searchResults" classe="table"></table>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#name").keyup(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Home/StockSelector",
+                data: '{name:"' + $("#name").val() + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+
+                    $("#searchResults").html("");
+                    for (var i = 0; i < response.length; i++) {
+                        var StockTkr = response[i]; // get Customer at index
+                        var Tr = "<tr>";
+                        //  var Td1 = "<td>" + StockTkr.Name + "</td>";
+                        var Td2 = "<td>" + StockTkr.Symbol + "</td>";
+
+                        $("#searchResults").append(Tr + Td2 + "</tr>");
+                    }
+                    // alert(response);
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+    });
+</script>
 

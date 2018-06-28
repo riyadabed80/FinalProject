@@ -360,5 +360,35 @@ namespace FinalProjectPortfolio.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
+        public ActionResult GetStockSelector()
+        { return View(); }
+
+
+
+        public JsonResult StockSelector(string name)
+        {
+            // ORM
+
+            portfolioEntities ORM = new portfolioEntities();
+
+            // search by name
+
+            List<StockTkr> Result = ORM.StockTkrs.Where(c => c.Name.Contains(name)).ToList();
+
+            // Return data as Jason!
+
+            return Json(Result);
+        }
+
+
     }
 }

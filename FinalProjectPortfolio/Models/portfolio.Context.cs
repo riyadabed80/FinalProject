@@ -27,5 +27,6 @@ namespace FinalProjectPortfolio.Models
     
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Portfolio> Portfolios { get; set; }
+        public virtual DbSet<StockTkr> StockTkrs { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="portfolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="portfolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,6 +63,15 @@
           <Property Name="totalprofiit" Type="money" Nullable="false" />
           <Property Name="totalpercentage" Type="money" Nullable="false" />
         </EntityType>
+        <EntityType Name="StockTkr">
+          <Key>
+            <PropertyRef Name="Symbol" />
+          </Key>
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IPOyear" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Industry" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Portfolio_Table_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Portfolios" Type="Self.Portfolios" Multiplicity="*" />
@@ -78,13 +87,13 @@
         <EntityContainer Name="portfolioModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Portfolios" EntityType="Self.Portfolios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockTkr" EntityType="Self.StockTkr" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Portfolio_Table_AspNetUsers" Association="Self.FK_Portfolio_Table_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Portfolios" EntitySet="Portfolios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="portfolioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -167,7 +176,17 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Portfolios" EntitySet="Portfolios" />
           </AssociationSet>
+          <EntitySet Name="StockTkrs" EntityType="portfolioModel.StockTkr" />
         </EntityContainer>
+        <EntityType Name="StockTkr">
+          <Key>
+            <PropertyRef Name="Symbol" />
+          </Key>
+          <Property Name="Symbol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IPOyear" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Industry" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -231,6 +250,16 @@
                 <ScalarProperty Name="percentage2" ColumnName="percentage2" />
                 <ScalarProperty Name="profitloss3" ColumnName="profitloss3" />
                 <ScalarProperty Name="percentage3" ColumnName="percentage3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockTkrs">
+            <EntityTypeMapping TypeName="portfolioModel.StockTkr">
+              <MappingFragment StoreEntitySet="StockTkr">
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="IPOyear" ColumnName="IPOyear" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
