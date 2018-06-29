@@ -37,8 +37,9 @@ namespace FinalProjectPortfolio.Controllers
             port.stock1_no_shares = NumberOfShares(port.stock1_beg_investment_value, port.stock1_beg_share_price);
             port.stock2_no_shares = NumberOfShares(port.stock2_beg_investment_value, port.stock2_beg_share_price);
             port.stock3_no_shares = NumberOfShares(port.stock3_beg_investment_value, port.stock3_beg_share_price);
-      
-
+            port.stock1_ending_investment_value = port.stock1_no_shares * port.stock1_closing_share_price;
+            port.stock2_ending_investment_value = port.stock2_no_shares * port.stock2_closing_share_price;
+            port.stock3_ending_investment_value = port.stock3_no_shares * port.stock3_closing_share_price;
             port.profitloss1 = TotalAmountGained(port.stock1_ending_investment_value, port.stock1_beg_investment_value);
             port.profitloss2 = TotalAmountGained(port.stock2_ending_investment_value, port.stock2_beg_investment_value);
             port.profitloss3 = TotalAmountGained(port.stock3_ending_investment_value, port.stock3_beg_investment_value);
@@ -51,11 +52,9 @@ namespace FinalProjectPortfolio.Controllers
             port.totalpercentage = ((port.totalending-port.totalbegining)/5000)*100;
 
 
-            port.stock1_ending_investment_value = port.stock1_no_shares * port.stock1_closing_share_price;
-            port.stock2_ending_investment_value = port.stock2_no_shares * port.stock2_closing_share_price;
-            port.stock3_ending_investment_value = port.stock3_no_shares * port.stock3_closing_share_price;
 
-            if (port.stock1_ending_investment_value + port.stock2_ending_investment_value + port.stock3_ending_investment_value <= 5000)
+
+            if (port.stock1_beg_investment_value+ port.stock2_beg_investment_value + port.stock2_beg_investment_value <= 5000)
             {
                 ORM.Portfolios.Add(port);
 
@@ -71,7 +70,7 @@ namespace FinalProjectPortfolio.Controllers
             }
             else
             {
-                ViewBag.Message =$"{port.stock1_beg_investment_value + port.stock1_beg_investment_value + port.stock1_beg_investment_value}";
+                ViewBag.Message =$"{port.stock1_beg_investment_value + port.stock2_beg_investment_value + port.stock3_beg_investment_value}";
                 return View("SaveSymbol");
             }
      
@@ -190,7 +189,7 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
-            DateTime closing = DateTime.Now.AddHours(-1).AddSeconds(-1* DateTime.Now.Second);
+            DateTime closing = DateTime.Now.AddHours(-0).AddSeconds(-1* DateTime.Now.Second);
             string close = closing.ToString("yyyy-MM-dd HH:mm:ss");
 
 
@@ -352,14 +351,14 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.totalbegining = amountInvested + OldFounded.stock2_beg_investment_value + OldFounded.stock3_beg_investment_value;
                 OldFounded.totalending = endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock1_ending_investment_value;
                 OldFounded.totalprofiit = profitloss + OldFounded.profitloss2 + OldFounded.profitloss1;
-                OldFounded.totalpercentage = percentage + OldFounded.percentage2 + OldFounded.percentage1;
+                OldFounded.totalpercentage = (((endValue+OldFounded.stock2_ending_investment_value+OldFounded.stock1_ending_investment_value)-5000)/5000)*100;
             }
 
             ////if (OldFounded != null && ModelState.IsValid)
             ////{
             //if (percentage+OldFounded.percentage2+OldFounded.percentage1 != 5000 || percentage+OldFounded.percentage1+OldFounded.percentage3 != 5000|| percentage+OldFounded.percentage2+OldFounded.percentage3  != 5000)
             //{
-            //    //ORM.Portfolios.Add();
+                //ORM.Portfolios.Add();
 
             //    //string email = User.Identity.GetUserName();
             //    //ORM.AspNetUsers.Where(u => u.Email ==email ).ToArray()[0].Portfolios.ToList().Add(port);
