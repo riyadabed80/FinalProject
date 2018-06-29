@@ -31,7 +31,7 @@ $(function () {
 });
 
 function total() {
-    if ("#stock1" + "#stock2" + "#stock3" == 5000)
+    if ($("#stock1").val + $("#stock2").val + $("#stock3").val == 5000)
     {
         continue;
     }

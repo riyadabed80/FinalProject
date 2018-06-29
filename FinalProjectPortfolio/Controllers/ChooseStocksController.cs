@@ -49,12 +49,13 @@ namespace FinalProjectPortfolio.Controllers
             port.totalbegining = (port.stock1_beg_investment_value+port.stock2_beg_investment_value+port.stock3_beg_investment_value);
             port.totalending = port.stock1_ending_investment_value + port.stock2_ending_investment_value + port.stock3_ending_investment_value;
             port.totalprofiit= port.profitloss1 + port.profitloss2 + port.profitloss3;
-            port.totalpercentage = ((port.totalending-port.totalbegining)/5000)*100;
+            port.totalpercentage = (port.totalprofiit/port.totalbegining)*100;
 
 
 
 
-            if (port.stock1_beg_investment_value+ port.stock2_beg_investment_value + port.stock2_beg_investment_value <= 5000)
+            if (port.stock1_beg_investment_value + port.stock2_beg_investment_value + port.stock3_beg_investment_value <= 5000)
+
             {
                 ORM.Portfolios.Add(port);
 
@@ -189,7 +190,9 @@ namespace FinalProjectPortfolio.Controllers
             //ViewBag.StockData = JsonData["Meta Data"]["2. Symbol"];
             //double userPrice = Double.Parse(JsonData["Time Series (Daily)"][date]["4. close"].ToString());
 
+
             DateTime closing = DateTime.Now.AddHours(-0).AddSeconds(-1* DateTime.Now.Second);
+
             string close = closing.ToString("yyyy-MM-dd HH:mm:ss");
 
 
@@ -315,8 +318,7 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.totalbegining = amountInvested + OldFounded.stock2_beg_investment_value + OldFounded.stock3_beg_investment_value;
                 OldFounded.totalending = endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock3_ending_investment_value;
                 OldFounded.totalprofiit = profitloss + OldFounded.profitloss2 + OldFounded.profitloss3;
-                OldFounded.totalpercentage = percentage + OldFounded.percentage2 + OldFounded.percentage3;
-
+                OldFounded.totalpercentage = (((endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock3_ending_investment_value) - 5000) / 5000) * 100;
 
             }
             else if (num == 2)
@@ -334,7 +336,7 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.totalbegining = amountInvested + OldFounded.stock1_beg_investment_value + OldFounded.stock3_beg_investment_value;
                 OldFounded.totalending = endValue + OldFounded.stock1_ending_investment_value + OldFounded.stock3_ending_investment_value;
                 OldFounded.totalprofiit = profitloss + OldFounded.profitloss1 + OldFounded.profitloss3;
-                OldFounded.totalpercentage = percentage + OldFounded.percentage1 + OldFounded.percentage3;
+                OldFounded.totalpercentage = (((endValue + OldFounded.stock1_ending_investment_value + OldFounded.stock3_ending_investment_value) - 5000) / 5000) * 100;
             }
             else
             {
@@ -351,39 +353,41 @@ namespace FinalProjectPortfolio.Controllers
                 OldFounded.totalbegining = amountInvested + OldFounded.stock2_beg_investment_value + OldFounded.stock3_beg_investment_value;
                 OldFounded.totalending = endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock1_ending_investment_value;
                 OldFounded.totalprofiit = profitloss + OldFounded.profitloss2 + OldFounded.profitloss1;
-                OldFounded.totalpercentage = (((endValue+OldFounded.stock2_ending_investment_value+OldFounded.stock1_ending_investment_value)-5000)/5000)*100;
-            }
 
-            ////if (OldFounded != null && ModelState.IsValid)
-            ////{
-            //if (percentage+OldFounded.percentage2+OldFounded.percentage1 != 5000 || percentage+OldFounded.percentage1+OldFounded.percentage3 != 5000|| percentage+OldFounded.percentage2+OldFounded.percentage3  != 5000)
-            //{
+                OldFounded.totalpercentage = (((endValue + OldFounded.stock2_ending_investment_value + OldFounded.stock1_ending_investment_value) - 5000) / 5000) * 100;
+
+                ////if (OldFounded != null && ModelState.IsValid)
+                ////{
+                //if (percentage+OldFounded.percentage2+OldFounded.percentage1 != 5000 || percentage+OldFounded.percentage1+OldFounded.percentage3 != 5000|| percentage+OldFounded.percentage2+OldFounded.percentage3  != 5000)
+                //{
                 //ORM.Portfolios.Add();
 
-            //    //string email = User.Identity.GetUserName();
-            //    //ORM.AspNetUsers.Where(u => u.Email ==email ).ToArray()[0].Portfolios.ToList().Add(port);
+                //    //string email = User.Identity.GetUserName();
+                //    //ORM.AspNetUsers.Where(u => u.Email ==email ).ToArray()[0].Portfolios.ToList().Add(port);
 
 
 
-            //    // ORM.Portfolio_Table.Add(port);
-            //    ViewBag.Message = "Total amount invested must be equal to $5000";
-            //    return View("UpdatePortfolio");
+                //    // ORM.Portfolio_Table.Add(port);
+                //    ViewBag.Message = "Total amount invested must be equal to $5000";
+                //    return View("UpdatePortfolio");
+                //}
+                //else
+                //{
+            }
+            ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
+            ORM.SaveChanges();
+            return RedirectToAction("Portfolio");
+
             //}
-            //else
-            //{
-                ORM.Entry(OldFounded).State = System.Data.Entity.EntityState.Modified;
-                ORM.SaveChanges();
-                return RedirectToAction("Portfolio");
-        
-            //}
 
- 
+
             //}
             //else
             //{
             //    ViewBag.ErrorMessage = "Oops! Something Went Wrong";
             //    return View("Error");
             //}
+            
 
         }
 
